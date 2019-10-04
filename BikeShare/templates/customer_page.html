@@ -6,7 +6,60 @@
 </head>
 <body>
 
-    <h1>Customer page</h1>
+    <h1>Customer page </h1>
+    <h5>Username: {{ request.user.username }}<br>
+        Email: {{ request.user.email }} <br>
+        Wallet balance: ?</h5>
+
+    <h3>Rent a Bike</h3>
+
+
+    {% for station in all_stations %}
+        <form action="{% url 'bikeshare:rent_bike' station.id %}" method="post">
+            {% csrf_token %}
+            <li>Station: {{ station.station_name }} <br>
+                Bikes Available: {{ station.number_of_bikes }} <br>
+                {% if station.number_of_bikes > 0  %}
+                    <input type="submit" name="user_id" value="{{ request.user.id }}">Rent Bike<br><br></li>
+                {% else %},
+                    <a><br></a>
+                {% endif %}
+        </form>
+    {% endfor %}
+
+
+
+    <h3>Orders</h3>
+
+    {% for order in all_orders %}
+
+          <form action="{% url 'bikeshare:return_bike' order.id %}" method="post">
+            {% csrf_token %}
+            <li>
+                User: {{ order.user.username }} <br>
+                Bike ID: {{ order.bike.id }} <br>
+                Start station: {{ order.start_station }} <br>
+                Start time: {{ order.start_time }} <br>
+
+                <input type="submit" name="return_station" value="">Return Bike<br>
+          </form>
+
+          <form action="{% url 'bikeshare:report_faulty' order.id %}" method="post">
+          {% csrf_token %}
+              <input type="submit" name="report_faulty" value="">Report Faulty <br><br>
+          </form>
+
+
+        </li>
+
+    {% endfor %}
+
+
+
+
+
+
+
 
 
 </body>

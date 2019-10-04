@@ -8,6 +8,18 @@
 
     <h1>Operator Page</h1>
 
+    <h3>Faulty bikes</h3>
+
+    {% for faultybike in faulty_bikes %}
+
+        <li> Bike ID: {{ faultybike.bike.id }}<br>
+        Current Location: {{ faultybike.bike.station }}
+
+        </li>
+
+
+    {% endfor %}
+
 
 </body>
 
