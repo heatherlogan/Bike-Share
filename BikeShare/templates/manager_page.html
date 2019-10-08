@@ -11,6 +11,23 @@
 
     <h3>Previous Orders</h3>
 
+    {% for order in previous_orders %}
+
+        <li>
+        Order ID: {{ order.id }} <br>
+        Username: {{ order.user }}<br>
+        Start Station: {{ order.start_station }} <br>
+        Start Time: {{ order.start_time }} <br>
+        End Time: {{ order.check_out_time }}<br>
+        Amount Paid: {{ order.due_amount }}<br><br>
+
+
+        </li>
+
+
+
+    {% endfor %}
+
 
 </body>
 

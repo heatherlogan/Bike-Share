@@ -28,10 +28,9 @@
     {% endfor %}
 
 
-
     <h3>Orders</h3>
 
-    {% for order in all_orders %}
+    {% for order in current_orders %}
 
           <form action="{% url 'bikeshare:return_bike' order.id %}" method="post">
             {% csrf_token %}
@@ -48,7 +47,6 @@
           {% csrf_token %}
               <input type="submit" name="report_faulty" value="">Report Faulty <br><br>
           </form>
-
 
         </li>
 

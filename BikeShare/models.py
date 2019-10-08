@@ -1,7 +1,7 @@
 from django.db import models
 from django import forms
 from django.utils import timezone
-from django.contrib.auth.models import User # AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import User, AbstractBaseUser, BaseUserManager
 # Create your models here.
 
 
@@ -12,7 +12,8 @@ class Station(models.Model):
         return self.station_name
 
     def number_of_bikes(self):
-        return self.bike_set.count()
+        available_bikes = self.bike_set.all().filter(in_use=False, is_faulty=False)
+        return available_bikes.count()
 
 
 class Bike(models.Model):
@@ -45,22 +46,9 @@ class Order(models.Model):
     start_time = models.DateTimeField(default=timezone.now)
     check_out_time = models.DateTimeField(default=timezone.now)
     due_amount = models.FloatField(default=0.00)
+    is_complete = models.BooleanField(default=False)
 
     def __str__(self):
         return "Order ID: {}\nCustomer ID: {}\nBike ID: {} ".format(self.pk, self.user, self.bike)
-
-
-class FaultyBikes(models.Model):
-    bike = models.ForeignKey(Bike, on_delete=models.CASCADE, null=False)
-
-    class Meta:
-        verbose_name_plural = 'Faulty Bikes'
-
-
-class PreviousOrders(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, null=False)
-
-    class Meta:
-        verbose_name_plural = 'Previous Orders'
 
 

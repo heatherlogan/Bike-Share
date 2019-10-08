@@ -6,19 +6,48 @@
 </head>
 <body>
 
-    <h1>Operator Page</h1>
+<h1>Operator Page</h1>
 
-    <h3>Faulty bikes</h3>
+<h3>Faulty bikes</h3>
 
-    {% for faultybike in faulty_bikes %}
-
-        <li> Bike ID: {{ faultybike.bike.id }}<br>
-        Current Location: {{ faultybike.bike.station }}
-
-        </li>
+{% for bike in faulty_bikes %}
+    <li> Bike ID: {{ bike.id }}<br>
+        Current Location: {{ bike.station }}<br>
+        Condition: {{ bike.condition }}<br>
 
 
-    {% endfor %}
+    <form action="{% url 'bikeshare:repair_bike' bike.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="repair_bike" value="">Repair Bike <br>
+    </form>
+    <br>
+    </li>
+
+{% endfor %}
+
+
+<h3>Move bike location</h3>
+
+{% for bike in free_bikes %}
+
+    <li> Bike ID: {{ bike.id }}<br>
+    Current Location: {{ bike.station }} <br>
+    Condition: {{ bike.condition }}<br>
+
+
+   <form action="{% url 'bikeshare:move_bike' bike.id %}" method="post">
+        {% csrf_token %}
+
+            <select type="select" id="move_bike_locations">
+                <option value="">Select station to move bike </option>
+                {% for station in move_stations %}
+                    <option value="{{ station.pk}}">{{ station.station_name }}</option>
+                {% endfor %}
+            </select>
+        <br>><br>
+        </form>
+
+{% endfor %}
 
 
 </body>

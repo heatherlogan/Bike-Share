@@ -15,5 +15,7 @@ urlpatterns = [
 
     path('manager/', views.manager_page, name='bikeshare-manager'),
     path('operator/', views.operator_page, name='bikeshare-operator'),
+    path('operator/<int:bike_id>/repair_bike', views.repair_bike, name='repair_bike'),
+    path('operator/<int:bike_id>/move_bike', views.move_bike, name='move_bike')
 
 ]
