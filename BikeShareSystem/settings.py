@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'account.apps.AccountConfig',
     'BikeShare.apps.BikeshareConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -69,6 +70,9 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTH_USER_MODEL = 'account.Account'
+
 
 WSGI_APPLICATION = 'BikeShareSystem.wsgi.application'
 

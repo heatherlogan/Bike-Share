@@ -2,6 +2,7 @@ from django.db import models
 from django import forms
 from django.utils import timezone
 from django.contrib.auth.models import User, AbstractBaseUser, BaseUserManager
+from BikeShareSystem import settings
 # Create your models here.
 
 
@@ -41,7 +42,7 @@ class Bike(models.Model):
 class Order(models.Model):
 
     bike = models.ForeignKey(Bike, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=0)
     start_station = models.ForeignKey(Station, on_delete=models.CASCADE, default="")
     start_time = models.DateTimeField(default=timezone.now)
     check_out_time = models.DateTimeField(default=timezone.now)

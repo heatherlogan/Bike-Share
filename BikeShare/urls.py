@@ -1,12 +1,19 @@
 from django.contrib import admin
 from django.urls import path, include
 from . import views
+from account.views import registration_view, logout_view, login_view
+
 
 app_name = 'bikeshare'
 
 urlpatterns = [
 
     path('', views.home, name='bikeshare-main'),
+    path('login/', login_view, name='login'),
+    path('signup/', registration_view, name='signup'),
+    path('logout/', logout_view, name='logout'),
+    path('top-up/', views.top_up_balance, name='top-up'),
+    path('top-up/submit/', views.submit_top_up, name='top-up-submit'),
 
     path('customer/', views.customer_page, name='bikeshare-customer'),
     path('customer/<int:station_id>/rent', views.rent_bike, name='rent_bike'),

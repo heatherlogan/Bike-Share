@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<form method="post" action="{% url 'bikeshare:top-up-submit' %}">
+{% csrf_token %}
+
+  <h3><center>TOP UP</center> </h3>
+    <h6><center>YOUR BALANCE: {{ request.user.wallet_balance }}</center> </h6>
+    <div class="container">
+        {{ form }}
+  </div>
+
+  <div class="container" align="center" >
+    <br>
+    <button type="submit" id ="topup" class="waves-effect waves-light btn">confirm
+    </button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <button type="button" id="cancel" class="cancelbtn waves-effect waves-light btn">Cancel</button>
+
+  </div>
+</form>
+{% endblock  %}

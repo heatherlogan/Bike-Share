@@ -1,18 +1,17 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 
-<html>
-<head>
-    <title></title>
-</head>
+{% block content %}
 <body>
 
     <h1>Customer page </h1>
-    <h5>Username: {{ request.user.username }}<br>
+    <h6>Username: {{ request.user.username }}<br>
         Email: {{ request.user.email }} <br>
-        Wallet balance: ?</h5>
+        Wallet balance: £{{ request.user.wallet_balance }}</h6>
+
+    <button type="button" id="cancel" class="cancelbtn waves-effect waves-light btn" onclick="location.href='{% url 'bikeshare:top-up' %}'">Top Up Balance</button>
+
 
     <h3>Rent a Bike</h3>
-
 
     {% for station in all_stations %}
         <form action="{% url 'bikeshare:rent_bike' station.id %}" method="post">
@@ -54,9 +53,7 @@
 
 
 
-
-
-
+{% endblock %}
 
 
 

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+<body>
+
+{% block content %}
+
+    <form method="post">
+        <h3><center> SIGN UP</center> </h3>
+    <div class="container">
+
+    {% csrf_token %}
+        {% for field in registation_form %}
+            <label><b>{{ field.label_tag }}</b></label>
+
+            {{ field }}
+            {% if field.help_text %}
+
+                {% for error in field.errors %}
+                    <p style="color:red;">{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    <br><br>
+    <div class="container" align="center">
+    <button type="submit" class="waves-effect waves-light btn">Sign Up</button>
+    </form>
+
+{% endblock %}
+
+
+
+</body>
+</html>

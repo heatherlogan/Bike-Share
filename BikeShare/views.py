@@ -1,6 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Bike, Station, Order, User
+from account.models import Account
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
 import datetime
+from .forms import TopUpForm
 from django.db.models import Q
 
 from django.template import loader
@@ -31,14 +36,15 @@ def rent_bike(request, station_id):
 
     station = get_object_or_404(Station, pk=station_id)
     bike = station.bike_set.all().filter(in_use=False, is_faulty=False).first()
-
     rented_bike = get_object_or_404(Bike, pk=bike.id)
-    user_id = get_object_or_404(User, pk= request.POST.get('user_id', False))
+    user = get_object_or_404(Account, pk= request.POST.get('user_id', False))
+
     time = datetime.datetime.now()
 
-    # check user does not have any incomplete orders TODO
+    user.hire_in_progress = True
+    user.save()
 
-    new_order = Order(bike=rented_bike, user=user_id, start_station=station, start_time=time)
+    new_order = Order(bike=rented_bike, user=user, start_station=station, start_time=time)
     new_order.save()
 
     bike.in_use = True
@@ -49,14 +55,13 @@ def rent_bike(request, station_id):
     current_orders = Order.objects.all().filter(is_complete=False)
     previous_orders = Order.objects.all().filter(is_complete=True)
     context = {
+        'user':user,
         'all_stations': all_stations,
         'all_bikes': all_bikes,
         'current_orders':current_orders,
         'previous_orders':previous_orders
     }
     return render(request, 'customer_page.html', context=context)
-
-
 
 
 def return_bike(request, order_id):
@@ -77,6 +82,11 @@ def return_bike(request, order_id):
 
     order.check_out_time = end
     order.due_amount = calculate_cost(start_time, end)
+    userid = order.user
+    print(userid.pk)
+    user = get_object_or_404(Account, pk=userid.pk)
+    user.hire_in_progress = False
+    user.save()
 
     bike = get_object_or_404(Bike, pk=order.bike.pk)
     bike.in_use = False
@@ -98,10 +108,30 @@ def return_bike(request, order_id):
     return render(request, 'customer_page.html', context=context)
 
 
+
+def top_up_balance(request):
+    form = TopUpForm()
+    return render(request, 'top_up.html', {'form':form})
+
+
+def submit_top_up(request):
+    if request.method == 'POST':
+        form = TopUpForm(request.POST)
+        if form.is_valid():
+            user = request.user
+            user.wallet_balance += int(form.cleaned_data['money'])
+            user.save()
+            print(user.wallet_balance)
+            return HttpResponseRedirect(request.POST.get('next', '/'))
+    else:
+        form = TopUpForm()
+    return render(request, 'top_up.html', {'form': form})
+
+
+
 def pay_bill(request, order_id):
 
     # if wallet balance is greater than bill then pay bill
-
     # else display error message to prompt wallet top up
 
     all_stations = Station.objects.all()
