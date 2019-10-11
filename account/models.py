@@ -57,7 +57,7 @@ class Account(AbstractBaseUser):
     amount_owed = models.FloatField(default=0.00)
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email', 'role']
+    REQUIRED_FIELDS = ['email']
 
     objects = MyAccountManager()
 
