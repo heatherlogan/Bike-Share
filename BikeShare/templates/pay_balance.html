@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
 
-<form method="post" action="{% url 'bikeshare:top-up-submit' %}">
+
+<form method="post" action="{% url 'bikeshare:pay-balance-submit' %}">
 {% csrf_token %}
 
-  <h3><center>TOP UP</center> </h3>
+  <h3><center>PAY BALANCE</center> </h3>
     <h6><center>YOUR BALANCE: {{ request.user.wallet_balance }}</center> </h6>
+    <h6><center>AMOUNT OWED: {{ request.user.amount_owed }}</center> </h6>
+
     <div class="container">
         {{ form }}
   </div>
@@ -16,8 +18,10 @@
     <br>
     <button type="submit" id ="topup" class="waves-effect waves-light btn">confirm
     </button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    <button type="button" id="cancel" class="cancelbtn waves-effect waves-light btn" onclick="location.href='{% url 'bikeshare:bikeshare-customer' %}'">Return</button>
+    <button type="button" id="cancel" class="cancelbtn waves-effect waves-light btn" onclick="location.href='{% url 'bikeshare:bikeshare-customer' %}'">
+      Return</button>
 
   </div>
 </form>
-{% endblock  %}
+
+{% endblock %}

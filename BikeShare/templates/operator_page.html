@@ -7,7 +7,10 @@
 
 <h3>Faulty bikes</h3>
 
-{% for bike in faulty_bikes %}
+{% for bike in all_bikes %}
+
+    {% if bike.is_faulty  %}
+
     <li> Bike ID: {{ bike.id }}<br>
         Current Location: {{ bike.station }}<br>
         Condition: {{ bike.condition }}<br>
@@ -20,29 +23,38 @@
     <br>
     </li>
 
+    {% endif %}
+
 {% endfor %}
 
 
-<h3>Move bike location</h3>
+<h3>Track/Move Bikes</h3>
 
-{% for bike in free_bikes %}
+{% for bike in all_bikes %}
 
     <li> Bike ID: {{ bike.id }}<br>
     Current Location: {{ bike.station }} <br>
     Condition: {{ bike.condition }}<br>
 
+    {% if bike.in_use %}
+
+    Bike currently in use  <br>
+
+    {% else %}
 
    <form action="{% url 'bikeshare:move_bike' bike.id %}" method="post">
+
         {% csrf_token %}
 
-            <select type="select" id="move_bike_locations">
-                <option value="">Select station to move bike </option>
-                {% for station in move_stations %}
-                    <option value="{{ station.pk}}">{{ station.station_name }}</option>
-                {% endfor %}
-            </select>
-        <br>><br>
-        </form>
+       <button type="submit" class="cancelbtn waves-effect waves-light btn" name="return_station">Move Bike</button><br>
+        {% for form in form %}
+            {{ form }}
+        {% endfor %}
+   </form>
+
+    {% endif %}<br>
+    </li>
+
 
 {% endfor %}
 

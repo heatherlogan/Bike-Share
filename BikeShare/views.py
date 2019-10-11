@@ -1,15 +1,11 @@
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Bike, Station, Order, User
 from account.models import Account
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
 import datetime
-from .forms import TopUpForm
+from .forms import TopUpForm, PayBalanceForm, LocationForm
 from django.db.models import Q
 
-from django.template import loader
-# Create your views here.
 
 def home(request):
     return render(request, 'home.html')
@@ -19,14 +15,14 @@ def customer_page(request):
 
     all_stations = Station.objects.all()
     all_bikes = Bike.objects.all()
-    current_orders = Order.objects.all().filter(is_complete=False)
-    previous_orders = Order.objects.all().filter(is_complete=True)
-
+    customers_orders = Order.objects.all().filter()
+    form = LocationForm()
     context = {
         'all_stations': all_stations,
         'all_bikes': all_bikes,
-        'current_orders': current_orders,
-        'previous_orders' : previous_orders}
+        'customers_orders': customers_orders,
+        'form': form}
+
     return render(request, 'customer_page.html', context=context)
 
 
@@ -41,7 +37,7 @@ def rent_bike(request, station_id):
 
     time = datetime.datetime.now()
 
-    user.hire_in_progress = True
+    user.hires_in_progress += 1
     user.save()
 
     new_order = Order(bike=rented_bike, user=user, start_station=station, start_time=time)
@@ -52,14 +48,12 @@ def rent_bike(request, station_id):
 
     all_stations = Station.objects.all()
     all_bikes = Bike.objects.all()
-    current_orders = Order.objects.all().filter(is_complete=False)
-    previous_orders = Order.objects.all().filter(is_complete=True)
+    customers_orders = Order.objects.all()
     context = {
         'user':user,
         'all_stations': all_stations,
         'all_bikes': all_bikes,
-        'current_orders':current_orders,
-        'previous_orders':previous_orders
+        'customers_orders':customers_orders,
     }
     return render(request, 'customer_page.html', context=context)
 
@@ -81,11 +75,14 @@ def return_bike(request, order_id):
     end = datetime.datetime.now()
 
     order.check_out_time = end
-    order.due_amount = calculate_cost(start_time, end)
+    order_cost = calculate_cost(start_time, end)
+    order.is_complete = True
+    order.due_amount = order_cost
+
     userid = order.user
-    print(userid.pk)
     user = get_object_or_404(Account, pk=userid.pk)
-    user.hire_in_progress = False
+    user.amount_owed += order_cost
+    user.hires_in_progress -= 1
     user.save()
 
     bike = get_object_or_404(Bike, pk=order.bike.pk)
@@ -96,17 +93,15 @@ def return_bike(request, order_id):
 
     all_stations = Station.objects.all()
     all_bikes = Bike.objects.all()
-    current_orders = Order.objects.all().filter(is_complete=False)
-    previous_orders = Order.objects.all().filter(is_complete=True)
-
+    customers_orders = Order.objects.all()
     context = {
+
+        'user': user,
         'all_stations': all_stations,
         'all_bikes': all_bikes,
-        'current_orders': current_orders,
-        'previous_orders' : previous_orders
+        'customers_orders':customers_orders,
     }
     return render(request, 'customer_page.html', context=context)
-
 
 
 def top_up_balance(request):
@@ -121,30 +116,38 @@ def submit_top_up(request):
             user = request.user
             user.wallet_balance += int(form.cleaned_data['money'])
             user.save()
-            print(user.wallet_balance)
-            return HttpResponseRedirect(request.POST.get('next', '/'))
     else:
         form = TopUpForm()
     return render(request, 'top_up.html', {'form': form})
 
 
+def pay_balance(request):
 
-def pay_bill(request, order_id):
+    form = PayBalanceForm()
 
-    # if wallet balance is greater than bill then pay bill
-    # else display error message to prompt wallet top up
+    return render(request, 'pay_balance.html', context={'form':form})
 
-    all_stations = Station.objects.all()
-    all_bikes = Bike.objects.all()
-    all_orders = Order.objects.all()
-    context = {
-        'all_stations': all_stations,
-        'all_bikes': all_bikes,
-        'all_orders': all_orders
-    }
 
-    return render(request, 'customer_page.html', context=context)
+def submit_pay_balance(request):
 
+    if request.method=='POST':
+        form = PayBalanceForm(request.POST)
+        if form.is_valid():
+            user = request.user
+            payment_amount = int(form.cleaned_data['money'])
+            if payment_amount <= user.wallet_balance and payment_amount <= user.amount_owed:
+                user.wallet_balance -= payment_amount
+                user.amount_owed -= payment_amount
+                user.save()
+            elif payment_amount > user.wallet_balance:
+                # errormsg: You don't have enough in your wallet
+                pass
+            elif payment_amount > user.amount_owed:
+                # errormsg: You don't owe this much
+                pass
+        else:
+            form = TopUpForm()
+        return render(request, 'pay_balance.html', {'form': form})
 
 
 def report_faulty(request, order_id):
@@ -152,34 +155,33 @@ def report_faulty(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
     bike = order.bike
     bike.is_faulty = True
-
     bike.save()
 
     all_stations = Station.objects.all()
     all_bikes = Bike.objects.all()
-    current_orders = Order.objects.all().filter(is_complete=False)
-    previous_orders = Order.objects.all().filter(is_complete=True)
+    customers_orders = Order.objects.all()
     context = {
         'all_stations': all_stations,
         'all_bikes': all_bikes,
-        'current_orders': current_orders,
-        'previous_orders' : previous_orders}
+        'customers_orders':customers_orders,
+    }
     return render(request, 'customer_page.html', context=context)
-
 
 
 def operator_page(request):
 
     faultybikes = Bike.objects.all().filter(is_faulty=True)
-    free_bikes = Bike.objects.all().filter(in_use=False)
+    all_bikes = Bike.objects.all().filter()
+
     move_stations = Station.objects.all()
 
     context = {
         'faulty_bikes': faultybikes,
-        'free_bikes': free_bikes,
+        'all_bikes': all_bikes,
         'move_stations': move_stations}
 
     return render(request, 'operator_page.html', context=context)
+
 
 def repair_bike(request, bike_id):
 
@@ -188,31 +190,29 @@ def repair_bike(request, bike_id):
     bike.save()
 
     faultybikes = Bike.objects.all().filter(is_faulty=True)
-    free_bikes = Bike.objects.all().filter(in_use=False)
-    move_stations = Station.objects.all().filter(~Q(station_name=bike.station.station_name))
+    all_bikes = Bike.objects.all().filter()
+    move_stations = Station.objects.all()
 
     context = {
         'faulty_bikes': faultybikes,
-        'free_bikes': free_bikes,
+        'all_bikes': all_bikes,
         'move_stations': move_stations}
-
-    return render(request, 'operator_page.html', context=context)
     return render(request, 'operator_page.html', context=context)
 
 
 def move_bike(request, bike_id):
+
     bike = get_object_or_404(Bike, pk=bike_id)
+    form = LocationForm(request.POST or None)
 
-    faultybikes = Bike.objects.all().filter(is_faulty=True)
-    free_bikes = Bike.objects.all().filter(in_use=False)
-    move_stations = Station.objects.all().filter(~Q(station_name=bike.station.station_name))
+    context={'bike': bike,
+             'form': form}
 
-    context = {
-        'faulty_bikes': faultybikes,
-        'free_bikes': free_bikes,
-        'move_stations': move_stations}
+    return render(request, 'move_bike.html', context=context)
 
-    return render(request, 'operator_page.html', context=context)
+
+
+
 
 def manager_page(request):
 

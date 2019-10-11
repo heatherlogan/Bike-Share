@@ -19,7 +19,7 @@ def login_view(request):
 
             if user:
                 login(request, user)
-                return redirect('/')
+                return redirect('/customer/')
     else:
         form = AccountAuthenticationForm()
 
@@ -35,14 +35,16 @@ def registration_view(request):
             form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
-            account = authenticate(username=username, password=raw_password)
+            role = form.cleaned_data.get('role')
+            account = authenticate(username=username, password=raw_password, role=role)
             login(request, account)
-            return redirect('/')
+            return redirect('/customer/')
         else:
             context['registation_form'] = form
     else:
         form = RegistrationForm()
         context['registation_form'] = form
+
     return render(request, 'signup.html', context)
 
 

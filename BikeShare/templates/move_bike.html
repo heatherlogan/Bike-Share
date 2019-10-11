@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+
+
+    <h3>
+        <center>Move Bike</center>
+    </h3>
+    <h6>
+        <center>Bike ID: {{ bike.id }}</center>
+    </h6>
+    <h6>
+        <center>Condition: {{ bike.condition }}</center>
+    </h6>
+    <h6>
+        <center>Current Location: {{ bike.station }}</center>
+    </h6>
+
+
+    <form method="post" action="{% url 'bikeshare:move_bike' bike.id %}">
+        {% csrf_token %}
+                {% for val, field in form.locations.field.choices %}
+                    <p>{{ field }}</p>
+                {% endfor %}
+
+
+        <div class="container" align="center">
+            <br>
+            <button type="submit" id="topup" class="waves-effect waves-light btn">Confirm
+            </button>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <button type="button" id="cancel" class="cancelbtn waves-effect waves-light btn"
+                    onclick="location.href='{% url 'bikeshare:bikeshare-operator' %}'">
+                Return
+            </button>
+        </div>
+    </form>
+
+
+
+
+
+{% endblock %}

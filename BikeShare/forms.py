@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from account.models import Account
+from .models import Bike, Station
 from django.contrib.auth import authenticate
 
 
@@ -9,13 +10,29 @@ class TopUpForm(forms.Form):
     money = forms.FloatField(label='Top Up Amount', max_value=100.0, min_value=5.0)
 
 
+class PayBalanceForm(forms.Form):
+    money = forms.FloatField(label='Payment Amount')
+
+
+class LocationForm(forms.ModelForm):
+    locations = forms.ModelChoiceField(queryset=Station.objects.all(), label='Station Location')
+    class Meta:
+        model = Station
+        fields='__all__'
+
+
 class RegistrationForm(UserCreationForm):
 
+    ROLE_CHOICES = (
+        ('0', 'Customer'),
+        ('1', 'Operator'),
+        ('2', 'Manager'),
+    )
     email = forms.EmailField(max_length=60, help_text='Add valid email address')
 
     class Meta:
         model = Account
-        fields = ["username", "email", "password1", "password2"]
+        fields = ["username", "email", "role", "password1", "password2"]
 
 
 class AccountAuthenticationForm(forms.ModelForm):
@@ -31,3 +48,4 @@ class AccountAuthenticationForm(forms.ModelForm):
         password = self.cleaned_data['password']
         if not authenticate(username=username, password=password):
             raise forms.ValidationError('Invalid Login')
+

@@ -39,6 +39,7 @@ class Bike(models.Model):
             return "Good"
 
 
+
 class Order(models.Model):
 
     bike = models.ForeignKey(Bike, on_delete=models.CASCADE)

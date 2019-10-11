@@ -6,9 +6,13 @@
     <h1>Customer page </h1>
     <h6>Username: {{ request.user.username }}<br>
         Email: {{ request.user.email }} <br>
-        Wallet balance: £{{ request.user.wallet_balance }}</h6>
+        Amount Owed: £{{ request.user.amount_owed }} <br>
+        Hires in Progress: {{ request.user.hires_in_progress }} <br>
+        Wallet balance: £{{ request.user.wallet_balance }}<br>
+    </h6>
 
     <button type="button" id="cancel" class="cancelbtn waves-effect waves-light btn" onclick="location.href='{% url 'bikeshare:top-up' %}'">Top Up Balance</button>
+    <button type="button" id="cancel" class="cancelbtn waves-effect waves-light btn" onclick="location.href='{% url 'bikeshare:pay-balance' %}'">Pay Balance</button>
 
 
     <h3>Rent a Bike</h3>
@@ -18,18 +22,22 @@
             {% csrf_token %}
             <li>Station: {{ station.station_name }} <br>
                 Bikes Available: {{ station.number_of_bikes }} <br>
+
                 {% if station.number_of_bikes > 0  %}
-                    <input type="submit" name="user_id" value="{{ request.user.id }}">Rent Bike<br><br></li>
-                {% else %},
-                    <a><br></a>
+                    <button type="submit" name="user_id" value="{{ request.user.id }}">Rent Bike</button><br><br></li>
+                {% else %}
+                    <a>No bikes available<br></a>
                 {% endif %}
+
         </form>
     {% endfor %}
 
 
     <h3>Orders</h3>
 
-    {% for order in current_orders %}
+    {% for order in customers_orders %}
+
+        {% if not order.is_complete and order.user.pk == request.user.id %}
 
           <form action="{% url 'bikeshare:return_bike' order.id %}" method="post">
             {% csrf_token %}
@@ -40,6 +48,8 @@
                 Start time: {{ order.start_time }} <br>
 
                 <input type="submit" name="return_station" value="">Return Bike<br>
+
+
           </form>
 
           <form action="{% url 'bikeshare:report_faulty' order.id %}" method="post">
@@ -48,6 +58,8 @@
           </form>
 
         </li>
+
+        {% endif %}
 
     {% endfor %}
 

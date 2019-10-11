@@ -9,12 +9,15 @@
     <div class="container">
 
     {% csrf_token %}
+
         {% for field in registation_form %}
+
             <label><b>{{ field.label_tag }}</b></label>
 
             {{ field }}
-            {% if field.help_text %}
 
+
+            {% if field.help_text %}
                 {% for error in field.errors %}
                     <p style="color:red;">{{ error }}</p>
                 {% endfor %}

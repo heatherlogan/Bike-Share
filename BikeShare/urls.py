@@ -14,6 +14,8 @@ urlpatterns = [
     path('logout/', logout_view, name='logout'),
     path('top-up/', views.top_up_balance, name='top-up'),
     path('top-up/submit/', views.submit_top_up, name='top-up-submit'),
+    path('pay-balance/', views.pay_balance, name='pay-balance'),
+    path('pay-balance/submit/', views.submit_pay_balance, name='pay-balance-submit'),
 
     path('customer/', views.customer_page, name='bikeshare-customer'),
     path('customer/<int:station_id>/rent', views.rent_bike, name='rent_bike'),
