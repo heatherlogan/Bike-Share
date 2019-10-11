@@ -5,62 +5,38 @@
 
 <h1>Operator Page</h1>
 
-<h3>Faulty bikes</h3>
 
-{% for bike in all_bikes %}
+<h3>Bike Activity</h3>
 
-    {% if bike.is_faulty  %}
-
-    <li> Bike ID: {{ bike.id }}<br>
-        Current Location: {{ bike.station }}<br>
-        Condition: {{ bike.condition }}<br>
-
-
-    <form action="{% url 'bikeshare:repair_bike' bike.id %}" method="post">
-        {% csrf_token %}
-        <input type="submit" name="repair_bike" value="">Repair Bike <br>
-    </form>
-    <br>
-    </li>
-
-    {% endif %}
-
-{% endfor %}
-
-
-<h3>Track/Move Bikes</h3>
-
-{% for bike in all_bikes %}
-
-    <li> Bike ID: {{ bike.id }}<br>
-    Current Location: {{ bike.station }} <br>
-    Condition: {{ bike.condition }}<br>
-
-    {% if bike.in_use %}
-
-    Bike currently in use  <br>
-
-    {% else %}
-
-   <form action="{% url 'bikeshare:move_bike' bike.id %}" method="post">
-
-        {% csrf_token %}
-
+    <table>
+        <thead>
+        <tr>
+            <th><label>Bike ID</label></th>
+            <th><label>Current Location</label></th>
+            <th><label>Condition</label></th>
+            <th><label>Move Bike</label></th>
+            <th><label>Repair</label></th>
+        </tr>
+        </thead>
+    <tbody>
+    {% for bike in all_bikes %}
+    <tr>
+    <th><label>{{ bike.id }}</label></th>
+        <th><label>{{ bike.station }}</label></th>
+    <th><label> {{ bike.condition }}</label></th>
+    <th><label>    {% if bike.in_use %} <br>Bike currently in use<br><br> {% else %}
+   <form action="{% url 'bikeshare:move_bike' bike.id %}" method="post">{% csrf_token %}
        <button type="submit" class="cancelbtn waves-effect waves-light btn" name="return_station">Move Bike</button><br>
-        {% for form in form %}
-            {{ form }}
-        {% endfor %}
    </form>
-
-    {% endif %}<br>
-    </li>
-
-
-{% endfor %}
-
-
-</body>
-
-</html>
+    {% endif %}
+    </label></th>
+        <th>
+            {% if bike.is_faulty %}<label> <form action="{% url 'bikeshare:repair_bike' bike.id %}" method="post">{% csrf_token %}
+            <button type="submit" class="cancelbtn waves-effect waves-light btn" name="repair_bike" value="">Repair Bike </button>
+    </form></label>{% endif %}</th>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
 
 {% endblock %}
