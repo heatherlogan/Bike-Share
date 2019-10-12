@@ -33,7 +33,7 @@ def rent_bike(request, station_id):
     station = get_object_or_404(Station, pk=station_id)
     bike = station.bike_set.all().filter(in_use=False, is_faulty=False).first()
     rented_bike = get_object_or_404(Bike, pk=bike.id)
-    user = get_object_or_404(Account, pk= request.POST.get('user_id', False))
+    user = get_object_or_404(Account, pk=request.POST.get('user_id', False))
 
     time = datetime.datetime.now()
 
@@ -58,7 +58,6 @@ def rent_bike(request, station_id):
     return render(request, 'customer_page.html', context=context)
 
 
-
 def return_bike(request, order_id):
 
     def calculate_cost(starttime, endtime):
@@ -71,38 +70,48 @@ def return_bike(request, order_id):
 
     order = get_object_or_404(Order, pk=order_id)
 
-    # update order table with end_station_id, end time
-    start_time = order.start_time
-    end = datetime.datetime.now()
+    if request.method == 'POST':
+        form = LocationForm(request.POST)
+        if form.is_valid():
+            start_time = order.start_time
+            end = datetime.datetime.now()
+            location = form.cleaned_data['locations']
+            station = get_object_or_404(Station, pk=location.pk)
 
-    order.check_out_time = end
-    order_cost = calculate_cost(start_time, end)
-    order.is_complete = True
-    order.due_amount = order_cost
+            order.end_station = station
+            order.check_out_time = end
+            order_cost = calculate_cost(start_time, end)
+            order.is_complete = True
+            order.due_amount = order_cost
 
-    userid = order.user
-    user = get_object_or_404(Account, pk=userid.pk)
-    user.amount_owed += order_cost
-    user.hires_in_progress -= 1
-    user.save()
+            userid = order.user
+            user = get_object_or_404(Account, pk=userid.pk)
+            user.amount_owed += order_cost
+            user.hires_in_progress -= 1
+            user.save()
 
-    bike = get_object_or_404(Bike, pk=order.bike.pk)
-    bike.in_use = False
-    bike.save()
+            bike = get_object_or_404(Bike, pk=order.bike.pk)
+            bike.in_use = False
+            bike.save()
 
-    order.save()
+            order.save()
 
-    all_stations = Station.objects.all()
-    all_bikes = Bike.objects.all()
-    customers_orders = Order.objects.all()
-    form = LocationForm()
-    context = {
-        'form': form,
-        'user': user,
-        'all_stations': all_stations,
-        'all_bikes': all_bikes,
-        'customers_orders':customers_orders,
-    }
+            return redirect('bikeshare:bikeshare-customer')
+
+        else:
+            form = LocationForm()
+
+        all_stations = Station.objects.all()
+        all_bikes = Bike.objects.all()
+        customers_orders = Order.objects.all()
+
+        context = {
+            'form': form,
+            'order':order,
+            'all_stations': all_stations,
+            'all_bikes': all_bikes,
+            'customers_orders':customers_orders,
+        }
     return render(request, 'return_bike.html', context=context)
 
 

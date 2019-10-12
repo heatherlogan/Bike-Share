@@ -44,7 +44,8 @@ class Order(models.Model):
 
     bike = models.ForeignKey(Bike, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=0)
-    start_station = models.ForeignKey(Station, on_delete=models.CASCADE, default="")
+    start_station = models.ForeignKey(Station, on_delete=models.CASCADE, default="", related_name='startstation')
+    end_station = models.ForeignKey(Station, on_delete=models.CASCADE, default=None, null=True, blank=True)
     start_time = models.DateTimeField(default=timezone.now)
     check_out_time = models.DateTimeField(default=timezone.now)
     due_amount = models.FloatField(default=0.00)
