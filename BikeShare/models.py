@@ -7,7 +7,7 @@ from BikeShareSystem import settings
 
 
 class Station(models.Model):
-    station_name = models.CharField(max_length=100, null=False, default="")
+    station_name = models.CharField(max_length=100, null=True)
 
     def __str__(self):
         return self.station_name

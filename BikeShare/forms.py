@@ -16,9 +16,10 @@ class PayBalanceForm(forms.Form):
 
 class LocationForm(forms.ModelForm):
     locations = forms.ModelChoiceField(queryset=Station.objects.all(), label='Station Location')
+
     class Meta:
         model = Station
-        fields='__all__'
+        fields=['locations']
 
 
 class RegistrationForm(UserCreationForm):

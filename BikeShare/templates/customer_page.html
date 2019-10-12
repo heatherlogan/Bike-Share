@@ -1,70 +1,82 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<body>
+    <body>
 
     <h2>BIKE SHARE</h2>
     <table align="center">
-    <thead>
-    <tr>
-        <th>Username </th>
-        <th>Email Address </th>
-        <th>Hires in Progress</th>
-        <th>Wallet balance</th>
-        <th>Amount Owed</th>
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email Address</th>
+            <th>Hires in Progress</th>
+            <th>Wallet balance</th>
+            <th>Amount Owed</th>
 
-    </tr>
-    </thead><tbody>
-    <tr>
-        <td>{{ request.user.username }}</td>
-        <td>{{ request.user.email }}</td>
-        <td>{{ request.user.hires_in_progress }}</td>
-        <td>£{{ request.user.wallet_balance  }}</td>
-        <td>£{{ request.user.amount_owed }}</td>
-    </tr>
-    </tbody>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ request.user.username }}</td>
+            <td>{{ request.user.email }}</td>
+            <td>{{ request.user.hires_in_progress }}</td>
+            <td>£{{ request.user.wallet_balance }}</td>
+            <td>£{{ request.user.amount_owed }}</td>
+        </tr>
+        </tbody>
     </table>
     <div class="container" align="center" style="padding: 10px">
 
 
-    <button type="button" id="cancel" class="cancelbtn waves-effect waves-light btn" onclick="location.href='{% url 'bikeshare:top-up' %}'">Top Up Balance</button>
-    <button type="button" id="cancel" class="cancelbtn waves-effect waves-light btn" onclick="location.href='{% url 'bikeshare:pay-balance' %}'">Pay Balance</button>
+        <button type="button" id="cancel" class="cancelbtn waves-effect waves-light btn"
+                onclick="location.href='{% url 'bikeshare:top-up' %}'">Top Up Balance
+        </button>
+        <button type="button" id="cancel" class="cancelbtn waves-effect waves-light btn"
+                onclick="location.href='{% url 'bikeshare:pay-balance' %}'">Pay Balance
+        </button>
 
     </div>
 
     <br><br>
-      <h4>Your Current Hires</h4>
+    <h4>Your Current Hires</h4>
 
     <table>
-      <thead>
-    <tr>
-      <th>Bike ID</th>
-      <th>Start Station</th>
-        <th>Start Time</th>
-        <th></th>
-        <th></th>
-    </tr>
-  </thead>
-    <tbody>
+        <thead>
+        <tr>
+            <th>Bike ID</th>
+            <th>Start Station</th>
+            <th>Start Time</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
         {% for order in customers_orders %}
 
-        {% if not order.is_complete and order.user.pk == request.user.id %}
+            {% if not order.is_complete and order.user.pk == request.user.id %}
 
-          <form action="{% url 'bikeshare:return_bike' order.id %}" method="post">
-            {% csrf_token %}
-    <tr>
-    <th><label>{{ order.bike.id }}</label></th>
-    <th><label> {{ order.start_station }}</label></th>
-        <th><label>{{ order.start_time }}</label></th>
-        <th><button type="submit" class="cancelbtn waves-effect waves-light btn" name="return_station" value="">Return Bike</button></form>
-    <th><br>
-        <form action="{% url 'bikeshare:report_faulty' order.id %}" method="post">
-          {% csrf_token %}
-            <button type="submit" class="cancelbtn waves-effect waves-light btn"  name="report_faulty" value="">Report Faulty</button></form>
-    </th>
-    </tr>
-          {% endif %}
-          {% endfor %}
+                <form action="{% url 'bikeshare:return_bike' order.id %}" method="post">
+                    {% csrf_token %}
+                    <tr>
+                        <th><label>{{ order.bike.id }}</label></th>
+                        <th><label> {{ order.start_station }}</label></th>
+                        <th><label>{{ order.start_time }}</label></th>
+                        <th>
+                            <button type="submit" class="cancelbtn waves-effect waves-light btn" name="return_station"
+                                    value="">Return Bike
+                            </button>
+                </form>
+                <th><br>
+                    <form action="{% url 'bikeshare:report_faulty' order.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="cancelbtn waves-effect waves-light btn" name="report_faulty"
+                                value="">Report Faulty
+                        </button>
+                    </form>
+                </th>
+                </tr>
+            {% endif %}
+        {% endfor %}
         </tbody>
     </table>
 
@@ -74,35 +86,39 @@
     <h4>Rent a Bike</h4>
 
     <table>
-  <thead>
-    <tr>
-      <th align="center">Station Name</th>
-      <th>Available Bikes</th>
-        <th>Rent Bike</th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for station in all_stations %}
-      <form action="{% url 'bikeshare:rent_bike' station.id %}" method="post">
-            {% csrf_token %}
-    <tr>
-      <td>
-          <label>{{ station.station_name }} </label>
-      </td>
-      <td>
-        <label>{{ station.number_of_bikes }}</label>
-      </td>
-        <td>
-        {% if station.number_of_bikes > 0  %}
-            <button type="submit" class="cancelbtn waves-effect waves-light btn" name="user_id" value="{{ request.user.id }}">Rent Bike</button>
-        {% else %}
-            <a>No bikes available</a>
-        {% endif %}
-        </td>
-    </tr></form>
-  {% endfor %}
+        <thead>
+        <tr>
+            <th align="center">Station Name</th>
+            <th>Available Bikes</th>
+            <th>Rent Bike</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for station in all_stations %}
+            <form action="{% url 'bikeshare:rent_bike' station.id %}" method="post">
+                {% csrf_token %}
+                <tr>
+                    <td>
+                        <label>{{ station.station_name }} </label>
+                    </td>
+                    <td>
+                        <label>{{ station.number_of_bikes }}</label>
+                    </td>
+                    <td>
+                        {% if station.number_of_bikes > 0 %}
+                            <button type="submit" class="cancelbtn waves-effect waves-light btn" name="user_id"
+                                    value="{{ request.user.id }}">Rent Bike
+                            </button>
+                        {% else %}
+                            <a>No bikes available</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            </form>
+        {% endfor %}
 
-  </tbody></table>
+        </tbody>
+    </table>
     <br><br>
 
 

@@ -58,6 +58,7 @@ def rent_bike(request, station_id):
     return render(request, 'customer_page.html', context=context)
 
 
+
 def return_bike(request, order_id):
 
     def calculate_cost(starttime, endtime):
@@ -94,14 +95,15 @@ def return_bike(request, order_id):
     all_stations = Station.objects.all()
     all_bikes = Bike.objects.all()
     customers_orders = Order.objects.all()
+    form = LocationForm()
     context = {
-
+        'form': form,
         'user': user,
         'all_stations': all_stations,
         'all_bikes': all_bikes,
         'customers_orders':customers_orders,
     }
-    return render(request, 'customer_page.html', context=context)
+    return render(request, 'return_bike.html', context=context)
 
 
 def top_up_balance(request):
@@ -203,14 +205,21 @@ def repair_bike(request, bike_id):
 def move_bike(request, bike_id):
 
     bike = get_object_or_404(Bike, pk=bike_id)
-    form = LocationForm(request.POST or None)
+    if request.method == 'POST':
+        form = LocationForm(request.POST)
+        if form.is_valid():
+            location = form.cleaned_data['locations']
+            station = get_object_or_404(Station, pk=location.pk)
+            bike.station = station
+            bike.save()
+        else:
+            print(form.errors)
+            form = LocationForm()
 
-    context={'bike': bike,
-             'form': form}
+        context={'bike': bike,
+                 'form': form}
 
     return render(request, 'move_bike.html', context=context)
-
-
 
 
 
