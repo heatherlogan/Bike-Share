@@ -8,6 +8,8 @@ from BikeShareSystem import settings
 
 class Station(models.Model):
     station_name = models.CharField(max_length=100, null=True)
+    station_latitude = models.FloatField(null=True)
+    station_longitude = models.FloatField(null=True)
 
     def __str__(self):
         return self.station_name

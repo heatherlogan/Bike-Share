@@ -7,9 +7,61 @@
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcO7TBAhqCQGkzRxioL1Ntt7i66SeOBig&callback=initMap"
+  type="text/javascript"></script>
 </head>
 
 <div class="container">
-<h3><center>HOME</center> </h3>
+
+<h3> <center>HOME</center> </h3>
+
+    <div id="map" height="40"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 55.8642, lng: -4.2518},
+          zoom: 10
+        });
+
+        var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+
+		var contentString = "<div>" +
+								"<p>Station Name: Partick</p></br>" +
+								"<p>Bikes availble: 45</p>" +
+							"</div>"
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
+        var marker1 = new google.maps.Marker({
+          position: {lat: 55.870125, lng: -4.307247},
+          map: map,
+          title: 'Partick',
+          label: 'Partick',
+          icon: image
+        });
+
+        var marker2 = new google.maps.Marker({
+          position: {lat: 55.859900, lng: -4.250548},
+          map: map,
+          title: 'Paesano',
+          label: 'Paesano',
+          icon: image
+        });
+
+        // station Name
+
+
+        marker1.addListener('click', function() {
+          infowindow.open(map, marker1);
+        });
+
+        document.getElementById('map').style.height = 500
+
+      }
+    </script>
+
 </div>
 {% endblock %}
