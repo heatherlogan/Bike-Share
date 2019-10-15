@@ -11,54 +11,77 @@
   type="text/javascript"></script>
 </head>
 
-<div class="container">
+<div class="container" margin-left="0px">
 
 <h3> <center>HOME</center> </h3>
 
     <div id="map" height="40"></div>
     <script>
       var map;
+
+      function addPopup(marker, content){
+      var infowindow = new google.maps.InfoWindow({
+          content: content
+        });
+
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+      }
+
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 55.8642, lng: -4.2518},
-          zoom: 10
+          zoom: 13
         });
+
+       var stations = {{all_stations|safe}}
+       console.log(stations)
+
+<!--        var stations = [-->
+<!--            {station_name:"Partick", lat:55.870125, lng:-4.307247, number_of_bikes: 0},-->
+<!--            {station_name:"Hillhead", lat:55.875603, lng:-4.292243, number_of_bikes: 1},-->
+<!--            {station_name:"Buchanan Street Bus Station", lat:55.865618, lng:-4.251851, number_of_bikes: 2}-->
+<!--        ]-->
+
 
         var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 
-		var contentString = "<div>" +
-								"<p>Station Name: Partick</p></br>" +
-								"<p>Bikes availble: 45</p>" +
+        var i;
+        for (i = 0; i < stations.length; i++) {
+            var marker1 = new google.maps.Marker({
+                position: {lat: stations[i].fields.station_latitude, lng: stations[i].fields.station_longitude},
+                map: map,
+                title: stations[i].fields.station_name,
+                //label: 'Partick',
+                icon: image
+             });
+
+             var contentString = "<div>" +
+								"<p>Station: <strong>" +  stations[i].fields.station_name + "</strong></p>" +
+								"<p><center>Bikes available: 10</center></p>" +
 							"</div>"
 
-        var infowindow = new google.maps.InfoWindow({
-          content: contentString
-        });
+		addPopup(marker1, contentString)
+        }
 
-        var marker1 = new google.maps.Marker({
-          position: {lat: 55.870125, lng: -4.307247},
-          map: map,
-          title: 'Partick',
-          label: 'Partick',
-          icon: image
-        });
 
-        var marker2 = new google.maps.Marker({
-          position: {lat: 55.859900, lng: -4.250548},
-          map: map,
-          title: 'Paesano',
-          label: 'Paesano',
-          icon: image
-        });
+
+
+<!--        var marker6 = new google.maps.Marker({-->
+<!--          position: {lat: 55.860795, lng: -4.263055},-->
+<!--          map: map,-->
+<!--          title: 'Waterloo Street',-->
+<!--          //label: 'Waterloo Street',-->
+<!--          icon: image-->
+<!--        });-->
+
+
 
         // station Name
 
-
-        marker1.addListener('click', function() {
-          infowindow.open(map, marker1);
-        });
-
-        document.getElementById('map').style.height = 500
+        document.getElementById('map').style.height = 550
+        //document.getElementById('map').style.width = 800
 
       }
     </script>

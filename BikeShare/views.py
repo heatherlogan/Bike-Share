@@ -6,9 +6,16 @@ import datetime
 from .forms import TopUpForm, PayBalanceForm, LocationForm
 from django.db.models import Q
 
+from django.core import serializers
+
 
 def home(request):
-    return render(request, 'home.html')
+    # all_stations = Station.objects.all()
+    all_stations = serializers.serialize("json", Station.objects.all())
+    context = {
+        'all_stations': all_stations
+    }
+    return render(request, 'home.html', context=context)
 
 
 def customer_page(request):
