@@ -9,7 +9,7 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li>
               {% if request.user.is_authenticated  %}
-                  <li class="tab">Hello, {{ request.user.username }}  </li><li> <a href="{% url 'bikeshare:logout' %}">Logout</a></a></li>
+                  <li class="tab">Hello, {{ request.user.username }} ({{ request.user.role }}) &nbsp; </li><li> <a href="{% url 'bikeshare:logout' %}">Logout</a></a></li>
             {% else %}
                   <li>   <a href="{% url 'bikeshare:login' %}">Login </li></a><li> <a href="{% url 'bikeshare:signup' %}"> Register</a></li>
         {% endif %}
@@ -20,7 +20,19 @@
     <div class="nav-content">
       <ul class="tabs tabs-transparent">
         <li class="tab"><a href="{% url 'bikeshare:bikeshare-main' %}">Home</a></li>
+
+          {% if request.user.is_superuser %}
         <li class="tab"><a class="active" href="{% url 'bikeshare:bikeshare-customer' %}">Rent A Bike</a></li>
+          <li class="tab"><a class="active" href="{% url 'bikeshare:bikeshare-operator' %}">Operator's Page</a></li>
+         <li class="tab"><a class="active" href="{% url 'bikeshare:bikeshare-manager' %}">Manager's Page</a></li>
+        {% elif request.user.role == 'Customer' %}
+        <li class="tab"><a class="active" href="{% url 'bikeshare:bikeshare-customer' %}">Rent A Bike</a></li>
+          {% elif request.user.role == 'Operator' %}
+          <li class="tab"><a class="active" href="{% url 'bikeshare:bikeshare-operator' %}">Operator's Page</a></li>
+         {% elif request.user.role == 'Manager' %}
+         <li class="tab"><a class="active" href="{% url 'bikeshare:bikeshare-manager' %}">Manager's Page</a></li>
+        {% endif %}
+
       </ul>
     </div>
   </nav>

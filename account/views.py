@@ -19,7 +19,13 @@ def login_view(request):
 
             if user:
                 login(request, user)
-                return redirect('/customer/')
+                role = request.user.role
+                if role == 'Customer':
+                    return redirect('/customer/')
+                elif role == 'Operator':
+                    return redirect('/operator/')
+                elif role == 'Manager':
+                    return redirect('/manager/')
     else:
         form = AccountAuthenticationForm()
 
@@ -38,7 +44,12 @@ def registration_view(request):
             role = form.cleaned_data.get('role')
             account = authenticate(username=username, password=raw_password, role=role)
             login(request, account)
-            return redirect('/customer/')
+            if role=='Customer':
+                return redirect('/customer/')
+            elif role=='Operator':
+                return redirect('/operator/')
+            elif role=='Manager':
+                return redirect('/manager/')
         else:
             context['registation_form'] = form
     else:

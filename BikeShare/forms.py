@@ -25,9 +25,9 @@ class LocationForm(forms.ModelForm):
 class RegistrationForm(UserCreationForm):
 
     ROLE_CHOICES = (
-        ('0', 'Customer'),
-        ('1', 'Operator'),
-        ('2', 'Manager'),
+        ('Customer', 'Customer'),
+        ('Operator', 'Operator'),
+        ('Manager', 'Manager'),
     )
     email = forms.EmailField(max_length=60, help_text='Add valid email address')
 

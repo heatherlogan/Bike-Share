@@ -5,25 +5,29 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class MyAccountManager(BaseUserManager):
 
-    def create_user(self, username, email, password=None):
+    def create_user(self, username, email, role,  password=None):
         if not username:
             raise ValueError("User must have username")
         if not email:
             raise ValueError("User must have email")
+        if not role:
+            raise ValueError("User must have role")
 
         user = self.model(
             username=username,
             email=self.normalize_email(email),
+            role=role,
         )
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, username, email, password):
+    def create_superuser(self, username, email, role, password):
         user = self.create_user(
             username=username,
             email=self.normalize_email(email),
-            password=password
+            role=role,
+            password=password,
         )
         user.is_admin = True
         user.is_staff = True
@@ -33,9 +37,9 @@ class MyAccountManager(BaseUserManager):
 
 
 ROLE_CHOICES = (
-    ('0', 'Customer'),
-    ('1', 'Operator'),
-    ('2', 'Manager'),
+    ('Customer', 'Customer'),
+    ('Operator', 'Operator'),
+    ('Manager', 'Manager'),
 )
 
 class Account(AbstractBaseUser):
@@ -44,7 +48,7 @@ class Account(AbstractBaseUser):
     email = models.EmailField(verbose_name='email', max_length=60, unique=True)
     date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
     last_login = models.DateTimeField(verbose_name='last login', auto_now=True)
-    role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='2')
+    role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='Customer')
 
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -57,7 +61,7 @@ class Account(AbstractBaseUser):
     amount_owed = models.FloatField(default=0.00)
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email']
+    REQUIRED_FIELDS = ['role', 'email']
 
     objects = MyAccountManager()
 
