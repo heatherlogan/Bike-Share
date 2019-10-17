@@ -8,6 +8,12 @@
 
   <h3><center>TOP UP</center> </h3>
     <h6><center>YOUR BALANCE: {{ request.user.wallet_balance }}</center> </h6>
+    {% if success_message %}
+
+    <a><center>{{ success_message }}</center></a>
+
+    {% endif %}
+    <br>
     <div class="container">
         {{ form }}
   </div>

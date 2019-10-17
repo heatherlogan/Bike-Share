@@ -1,4 +1,16 @@
+<head>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcO7TBAhqCQGkzRxioL1Ntt7i66SeOBig&callback=initMap"
+  type="text/javascript"></script>
+</head>
+
 {% extends 'base.html' %}
+
+    <!DOCTYPE html>
+    <head>
+      <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcO7TBAhqCQGkzRxioL1Ntt7i66SeOBig&callback=initMap"
+                type="text/javascript"></script>
+    </head>
 
 {% block content %}
     <body>
@@ -36,6 +48,7 @@
     </div>
 
     <br>
+
     <h5>Your Current Hires</h5>
 
     <table>
@@ -87,12 +100,12 @@
     <br>
 
     <h5>Station Locations</h5>
-        {% include 'city_map.html' %}
+
+    {% include 'city_map.html' %}
 
 
     <br>
     <h5>Rent a Bike</h5>
-
     <table>
         <thead>
         <tr>

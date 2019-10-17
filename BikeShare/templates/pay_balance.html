@@ -7,9 +7,14 @@
 {% csrf_token %}
 
   <h3><center>PAY BALANCE</center> </h3>
-    <h6><center>YOUR BALANCE: {{ request.user.wallet_balance }}</center> </h6>
-    <h6><center>AMOUNT OWED: {{ request.user.amount_owed }}</center> </h6>
+    <h6><center>YOUR BALANCE: £{{ request.user.wallet_balance }}</center> </h6>
+    <h6><center>AMOUNT OWED: £{{ request.user.amount_owed }}</center> </h6>
 
+    {% if msg %}
+
+        <a><center>{{ msg }}</center></a>
+
+    {% endif %}
     <div class="container">
         {{ form }}
   </div>

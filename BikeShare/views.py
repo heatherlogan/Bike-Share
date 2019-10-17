@@ -18,6 +18,11 @@ def home(request):
     return render(request, 'home.html', context=context)
 
 
+def city_map(request):
+    all_stations_map = serializers.serialize("json", Station.objects.all())
+    return render(request, 'city_map.html.html', context={'all_stations_map':all_stations_map})
+
+
 def customer_page(request):
 
     all_stations = Station.objects.all()
@@ -131,15 +136,25 @@ def top_up_balance(request):
 
 
 def submit_top_up(request):
+
+    success_message = ""
+
     if request.method == 'POST':
         form = TopUpForm(request.POST)
         if form.is_valid():
             user = request.user
-            user.wallet_balance += int(form.cleaned_data['money'])
+            money = int(form.cleaned_data['money'])
+            user.wallet_balance += money
+            success_message = "You have topped up by £{}".format(money)
             user.save()
     else:
         form = TopUpForm()
-    return render(request, 'top_up.html', {'form': form})
+
+    if success_message:
+        context = {'success_message':success_message, 'form':form}
+    else:
+        context = {'form':form}
+    return render(request, 'top_up.html', context=context)
 
 
 def pay_balance(request):
@@ -160,15 +175,24 @@ def submit_pay_balance(request):
                 user.wallet_balance -= payment_amount
                 user.amount_owed -= payment_amount
                 user.save()
+                if user.amount_owed == 0:
+                    msg = "You have paid off all your balance!"
+                else:
+                    msg = "You have paid £{}. You still owe £{}".format(payment_amount, user.amount_owed)
             elif payment_amount > user.wallet_balance:
-                # errormsg: You don't have enough in your wallet
-                pass
+                msg = "You don't have enough money in your wallet"
             elif payment_amount > user.amount_owed:
-                # errormsg: You don't owe this much
-                pass
+                msg: "You don't owe this much"
+
+            if msg:
+                context = {'msg':msg, 'form':form}
+            else:
+                context = {'form':form}
         else:
             form = TopUpForm()
-        return render(request, 'pay_balance.html', {'form': form})
+            context={'form':form}
+
+        return render(request, 'pay_balance.html', context=context)
 
 
 def report_faulty(request, order_id):
@@ -225,7 +249,7 @@ def move_bike(request, bike_id):
 
     bike = get_object_or_404(Bike, pk=bike_id)
     if request.method == 'POST':
-        form = LocationForm(request.POST)
+        form = LocationForm(request.POST or None)
         if form.is_valid():
             location = form.cleaned_data['locations']
             station = get_object_or_404(Station, pk=location.pk)
@@ -244,6 +268,6 @@ def move_bike(request, bike_id):
 
 def manager_page(request):
 
-    previous_orders = Order.objects.all().filter(is_complete=False)
+    previous_orders = Order.objects.all().filter(is_complete=True)
 
     return render(request, 'manager_page.html', context={'previous_orders':previous_orders})

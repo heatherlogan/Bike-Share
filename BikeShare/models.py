@@ -23,7 +23,7 @@ class Bike(models.Model):
 
     in_use = models.BooleanField(default=False)
     is_faulty = models.BooleanField(default=False)
-    station = models.ForeignKey(Station, on_delete=models.CASCADE, default="")
+    station = models.ForeignKey(Station, on_delete=models.CASCADE, default=1, blank=True, null=True)
 
     class Meta:
         verbose_name_plural = 'Bikes'

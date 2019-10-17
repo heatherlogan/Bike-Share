@@ -9,10 +9,8 @@
 </head>
 <body>
 
-    <h1>Manager Page</h1>
 
-
-    <h3>Previous Orders</h3>
+    <h5>Previous Orders</h5>
 
     {% for order in previous_orders %}
 
@@ -20,6 +18,7 @@
         Order ID: {{ order.id }} <br>
         Username: {{ order.user }}<br>
         Start Station: {{ order.start_station }} <br>
+        End Station: {{ order.end_station }} <br>
         Start Time: {{ order.start_time }} <br>
         End Time: {{ order.check_out_time }}<br>
         Amount Paid: {{ order.due_amount }}<br><br>
