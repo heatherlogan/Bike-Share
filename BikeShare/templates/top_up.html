@@ -11,11 +11,18 @@
     <div class="container">
         {{ form }}
   </div>
-
+  
+  <div class="container">
+    <label for="card"><b>Card number</b></label>
+    <input type="number" placeholder="enter your card number" required>
+    <br>
+    <label for="code"><b>3digital-code</b></label>
+    <input type="number" placeholder="enter your 3digital-code" required>
+    
   <div class="container" align="center" >
     <br>
-    <button type="submit" id ="topup" class="waves-effect waves-light btn">confirm
-    </button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <button type="submit" id ="topup" class="waves-effect waves-light btn">confirm</button>
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
     <button type="button" id="cancel" class="cancelbtn waves-effect waves-light btn" onclick="location.href='{% url 'bikeshare:bikeshare-customer' %}'">Return</button>
 
   </div>
