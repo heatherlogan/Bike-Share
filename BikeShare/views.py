@@ -23,12 +23,15 @@ def customer_page(request):
     all_stations = Station.objects.all()
     all_bikes = Bike.objects.all()
     customers_orders = Order.objects.all().filter()
+    all_stations_map = serializers.serialize("json", Station.objects.all())
+
     form = LocationForm()
     context = {
         'all_stations': all_stations,
         'all_bikes': all_bikes,
         'customers_orders': customers_orders,
-        'form': form}
+        'form': form,
+        'all_stations_map': all_stations_map}
 
     return render(request, 'customer_page.html', context=context)
 
