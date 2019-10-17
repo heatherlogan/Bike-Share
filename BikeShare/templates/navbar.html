@@ -1,0 +1,30 @@
+
+{% block content %}
+<body>
+
+ <nav class="nav-extended">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">BikeShare</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li>
+              {% if request.user.is_authenticated  %}
+                  <li class="tab">Hello, {{ request.user.username }}  </li><li> <a href="{% url 'bikeshare:logout' %}">Logout</a></a></li>
+            {% else %}
+                  <li>   <a href="{% url 'bikeshare:login' %}">Login </li></a><li> <a href="{% url 'bikeshare:signup' %}"> Register</a></li>
+        {% endif %}
+          </li>
+
+      </ul>
+    </div>
+    <div class="nav-content">
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a href="{% url 'bikeshare:bikeshare-main' %}">Home</a></li>
+        <li class="tab"><a class="active" href="{% url 'bikeshare:bikeshare-customer' %}">Rent A Bike</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+{% endblock %}

@@ -3,11 +3,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
-    {% if request.user.is_authenticated  %}
-            <p>Hello, {{ request.user.username }} | <a href="{% url 'bikeshare:logout' %}">Logout</a></p>
-        {% else %}
-            <p><a href="{% url 'bikeshare:login' %}">Login |</a><a href="{% url 'bikeshare:signup' %}"> Register</a></p>
-    {% endif %}
+
+{% include 'navbar.html' %}
+
 
 <body>
 

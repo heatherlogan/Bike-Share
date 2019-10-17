@@ -124,7 +124,7 @@ def return_bike(request, order_id):
 
 def top_up_balance(request):
     form = TopUpForm()
-    return render(request, 'top_up.html', {'form':form})
+    return render(request, 'top_up.html', {'form': form})
 
 
 def submit_top_up(request):
