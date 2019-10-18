@@ -166,6 +166,8 @@ def pay_balance(request):
 
 def submit_pay_balance(request):
 
+    msg = ""
+
     if request.method=='POST':
         form = PayBalanceForm(request.POST)
         if form.is_valid():
@@ -182,7 +184,7 @@ def submit_pay_balance(request):
             elif payment_amount > user.wallet_balance:
                 msg = "You don't have enough money in your wallet"
             elif payment_amount > user.amount_owed:
-                msg: "You don't owe this much"
+                msg = "You don't owe this much"
 
             if msg:
                 context = {'msg':msg, 'form':form}
@@ -248,19 +250,27 @@ def repair_bike(request, bike_id):
 def move_bike(request, bike_id):
 
     bike = get_object_or_404(Bike, pk=bike_id)
+    msg =""
     if request.method == 'POST':
-        form = LocationForm(request.POST or None)
+        form = LocationForm(request.POST)
         if form.is_valid():
-            location = form.cleaned_data['locations']
+            location = form.cleaned_data["locations"]
+            if location != bike.station:
+                msg = "You have moved bike from {} to {} Bike Station.".format(bike.station, location)
+            else:
+                msg = "Bike is already at {} Bike Station".format(bike.station)
             station = get_object_or_404(Station, pk=location.pk)
             bike.station = station
             bike.save()
         else:
-            print(form.errors)
             form = LocationForm()
 
-        context={'bike': bike,
-                 'form': form}
+        if msg:
+            context = {'msg':msg,
+                'bike': bike,
+                       'form': form}
+        else:
+            context={'bike': bike, 'form': form}
 
     return render(request, 'move_bike.html', context=context)
 

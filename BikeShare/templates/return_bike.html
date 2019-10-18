@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 
 {% block content %}
 
@@ -9,17 +10,26 @@
         <center>Start Location: {{ order.start_station }}</center>
     </h6>
 
-    <div class="container" align="center">
-    <form method="post" action="{% url 'bikeshare:return_bike' order.id %}" enctype=multipart/form-data >
-        {% csrf_token %}
-            {{ form }}
-        <button type="submit" id="returnbike" class="waves-effect waves-light btn">Confirm</button>
-    </form>
 
-    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    <button type="button" id="cancel" class="cancelbtn waves-effect waves-light btn"
-            onclick="location.href='{% url 'bikeshare:bikeshare-customer' %}'">Return
-    </button>
+     <div class="container" align="center">
+
+        <form method="post" name="movebikeform" action="{% url 'bikeshare:return_bike' order.id %}"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="id_locations">Station location:</label>
+            <select class="browser-default" id="id_locations" name="locations" required>
+                {% for field in form.visible_fields %}
+                    <option value="{{ field }}"></option>
+                {% endfor %}
+            </select>
+        <br>
+            <button type="submit" class="waves-effect waves-light btn">Return Bike</button>        </form>
+            <button id="cancel" class="cancelbtn waves-effect waves-light btn"
+            onclick="location.href='{% url 'bikeshare:bikeshare-customer' %}'">Go Back
+            </button>
+        <br>
+
+
     </div>
 
 

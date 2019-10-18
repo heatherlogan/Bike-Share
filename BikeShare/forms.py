@@ -19,7 +19,7 @@ class LocationForm(forms.ModelForm):
 
     class Meta:
         model = Station
-        fields=['locations']
+        fields = ['locations']
 
 
 class RegistrationForm(UserCreationForm):

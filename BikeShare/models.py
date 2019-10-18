@@ -7,7 +7,7 @@ from BikeShareSystem import settings
 
 
 class Station(models.Model):
-    station_name = models.CharField(max_length=100, null=True)
+    station_name = models.CharField(max_length=100, default="")
     station_latitude = models.FloatField(null=True)
     station_longitude = models.FloatField(null=True)
 
@@ -23,7 +23,7 @@ class Bike(models.Model):
 
     in_use = models.BooleanField(default=False)
     is_faulty = models.BooleanField(default=False)
-    station = models.ForeignKey(Station, on_delete=models.CASCADE, default=1, blank=True, null=True)
+    station = models.ForeignKey(Station, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name_plural = 'Bikes'
