@@ -1,40 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-
-<html>
-<head>
-    <title></title>
-</head>
 <body>
-
-
-    <h5>Previous Orders</h5>
-
-    {% for order in previous_orders %}
-
-        <li>
-        Order ID: {{ order.id }} <br>
-        Username: {{ order.user }}<br>
-        Start Station: {{ order.start_station }} <br>
-        End Station: {{ order.end_station }} <br>
-        Start Time: {{ order.start_time }} <br>
-        End Time: {{ order.check_out_time }}<br>
-        Amount Paid: {{ order.due_amount }}<br><br>
-            {% if order.fix_amount > 0.0 %}
-        Bike was reported as faulty during use<br>
-        Repair Cost: {{ order.fix_amount }}<br><br>
-            {% endif %}
-        </li>
-
-
-
-    {% endfor %}
-
-
+    <div class="container" align = "center">
+        <h3>Station Profit Contibution</h3>
+        <img src="data:image/png;base64, {{ station_profit }}" alt = "Profit per Station - - Pie Chart : Unavailable">
+    </div>
+    <div class="container" align = "center">
+        <h3>Route Frequency Distribution</h3>
+        <img src="data:image/png;base64, {{ route_frequency }}" alt = "Route Frequencies - Horizontal bar graph : Unavailable">
+    </div>
+    <div class="container" align = "center">
+        <h3>Station Bike Count</h3>
+        <img src="data:image/png;base64, {{ station_bike_count }}" alt = "Station Bike Count - Bar Graph : Unavailable">
+    </div>
+    <div class = "container" align = "center"></div>
+        <h3>Star Users</h3>
+        {% if book_list %}
+            <ul>
+                {% for user in star_users %}
+                    <li>
+                        {{ user.user }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <h5>Star Users : Unavailable</h5>
+        {% endif %}
+    </div>
 </body>
-
-</html>
-
 {% endblock %}

@@ -376,6 +376,6 @@ def manager_page(request):
         'station_profit': station_profit,
         'route_frequency': route_frequency,
         'station_bike_count': station_bike_count,
-        'star_users' : star_users}
+        'star_users': star_users}
 
     return render(request, 'manager_page.html', context=context)

@@ -14,9 +14,12 @@ class Station(models.Model):
     def __str__(self):
         return self.station_name
 
+    @property
     def number_of_bikes(self):
         available_bikes = self.bike_set.all().filter(in_use=False, is_faulty=False)
         return available_bikes.count()
+
+
 
 
 class Bike(models.Model):
