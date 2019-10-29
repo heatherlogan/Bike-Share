@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c759b705-4e97-422b-81d4-2278199300e5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/BikeShareSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BikeShareSystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BikeShare/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/BikeShare/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BikeShare/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/BikeShare/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BikeShare/templates/manager_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/BikeShare/templates/manager_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BikeShare/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/BikeShare/templates/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BikeShare/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/BikeShare/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/templates/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-    </list>
+    <list default="true" id="c759b705-4e97-422b-81d4-2278199300e5" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,8 +243,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/account/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="54" column="49" lean-forward="true" selection-start-line="54" selection-start-column="49" selection-end-line="54" selection-end-column="49" />
+            <state relative-caret-position="110">
+              <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
             </state>
           </provider>
         </entry>
@@ -379,10 +366,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="448" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="155" />
     <option name="y" value="23" />
-    <option name="width" value="992" />
+    <option name="width" value="1285" />
     <option name="height" value="810" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -500,7 +487,7 @@
   <component name="ToolWindowManager">
     <frame x="448" y="23" width="992" height="810" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -514,7 +501,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32961586" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50214595" side_tool="true" weight="0.21189591" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49785408" visible="true" weight="0.25467625" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49785408" visible="true" weight="0.6446043" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3283767" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -848,8 +835,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/account/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="54" column="49" lean-forward="true" selection-start-line="54" selection-start-column="49" selection-end-line="54" selection-end-column="49" />
+        <state relative-caret-position="110">
+          <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
         </state>
       </provider>
     </entry>
