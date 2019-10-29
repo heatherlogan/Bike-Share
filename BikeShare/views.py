@@ -1,11 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Bike, Station, Order, User
+from .models import Bike, Station, Order
 from account.models import Account
-from django.contrib.auth import login, authenticate
 import datetime
 from .forms import TopUpForm, PayBalanceForm, LocationForm
-from django.db.models import Q
-
 from django.core import serializers
 
 
@@ -78,9 +75,9 @@ def return_bike(request, order_id):
     def calculate_cost(starttime, endtime):
         if starttime.date() == endtime.date():
             hours_used = endtime.hour - starttime.hour
-            cost = (hours_used + 1) * 2.00
+            cost = (hours_used + 1) * 5.00
         else:
-            cost = 20.0 * (endtime.day - starttime.day)
+            cost = 30.0 * (endtime.day - starttime.day)
         return cost
 
     order = get_object_or_404(Order, pk=order_id)
@@ -200,6 +197,9 @@ def submit_pay_balance(request):
 def report_faulty(request, order_id):
 
     order = get_object_or_404(Order, pk=order_id)
+    order.fix_amount += 20.0
+    order.save()
+
     bike = order.bike
     bike.is_faulty = True
     bike.save()
@@ -207,6 +207,7 @@ def report_faulty(request, order_id):
     all_stations = Station.objects.all()
     all_bikes = Bike.objects.all()
     customers_orders = Order.objects.all()
+
     context = {
         'all_stations': all_stations,
         'all_bikes': all_bikes,

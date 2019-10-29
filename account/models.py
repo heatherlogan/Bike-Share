@@ -56,7 +56,6 @@ class Account(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
 
     hires_in_progress = models.IntegerField(default=0)
-    current_location = models.CharField(max_length=30, default="")
     wallet_balance = models.FloatField(default=0.00)
     amount_owed = models.FloatField(default=0.00)
 

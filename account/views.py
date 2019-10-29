@@ -41,7 +41,7 @@ def registration_view(request):
             form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
-            role = form.cleaned_data.get('role')
+            role = 'Customer'
             account = authenticate(username=username, password=raw_password, role=role)
             login(request, account)
             if role=='Customer':

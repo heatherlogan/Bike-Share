@@ -51,6 +51,7 @@ class Order(models.Model):
     start_time = models.DateTimeField(default=timezone.now)
     check_out_time = models.DateTimeField(default=timezone.now)
     due_amount = models.FloatField(default=0.00)
+    fix_amount = models.FloatField(default=0.00)
     is_complete = models.BooleanField(default=False)
 
     def __str__(self):

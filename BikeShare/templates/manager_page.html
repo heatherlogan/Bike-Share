@@ -22,8 +22,10 @@
         Start Time: {{ order.start_time }} <br>
         End Time: {{ order.check_out_time }}<br>
         Amount Paid: {{ order.due_amount }}<br><br>
-
-
+            {% if order.fix_amount > 0.0 %}
+        Bike was reported as faulty during use<br>
+        Repair Cost: {{ order.fix_amount }}<br><br>
+            {% endif %}
         </li>
 
 

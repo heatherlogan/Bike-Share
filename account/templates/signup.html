@@ -12,28 +12,11 @@
 
             {% for form in registation_form %}
 
-                {% if form.name != 'role' %}
-
                 <label><b>{{ form.label_tag }}</b></label>
 
                 {{ form }}
 
-                {% else %}
 
-                <label><b>{{ form.label_tag }}</b></label>
-
-                <select class="browser-default" id="id_role" name="role">
-                    {% for f in form.form %}
-                        <option value="{{ f }}"></option>
-                    {% endfor %}
-                </select>
-                {% endif %}
-
-                {% if field.help_text %}
-                    {% for error in field.errors %}
-                        <p style="color:red;">{{ error }}</p>
-                    {% endfor %}
-                {% endif %}
             {% endfor %}
             <br><br>
             <div class="container" align="center">

@@ -33,7 +33,7 @@ class RegistrationForm(UserCreationForm):
 
     class Meta:
         model = Account
-        fields = ["username", "email", "role", "password1", "password2"]
+        fields = ["username", "email", "password1", "password2"]
 
 
 class AccountAuthenticationForm(forms.ModelForm):
