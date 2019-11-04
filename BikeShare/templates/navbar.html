@@ -20,6 +20,7 @@
     <div class="nav-content">
       <ul class="tabs tabs-transparent">
         <li class="tab"><a href="{% url 'bikeshare:bikeshare-main' %}">Home</a></li>
+          <li class="tab"><a href="{% url 'bikeshare:howitworks' %}">How it Works</a></li>
           {% if request.user.is_superuser %}
         <li class="tab"><a class="active" href="{% url 'bikeshare:bikeshare-customer' %}">Rent A Bike</a></li>
           <li class="tab"><a class="active" href="{% url 'bikeshare:bikeshare-operator' %}">Operator's Page</a></li>

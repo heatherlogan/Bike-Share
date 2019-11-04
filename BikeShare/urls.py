@@ -9,6 +9,7 @@ app_name = 'bikeshare'
 urlpatterns = [
 
     path('', views.home, name='bikeshare-main'),
+    path('howitworks/', views.how_it_works, name='howitworks'),
     path('login/', login_view, name='login'),
     path('signup/', registration_view, name='signup'),
     path('logout/', logout_view, name='logout'),

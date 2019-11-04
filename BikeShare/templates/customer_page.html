@@ -47,8 +47,13 @@
                 onclick="location.href='{% url 'bikeshare:pay-balance' %}'">Pay Balance
         </button>
     </div>
-
     <br>
+    {% if repair_message %}
+
+        <a><center>{{ repair_message }} </center></a>
+
+    {% endif %}
+
 
     <h5>Your Current Hires</h5>
 
@@ -106,7 +111,20 @@
 
 
     <br>
-    <h5>Rent a Bike</h5>
+
+    {% if request.user.amount_owed >= 30.00 %}
+
+        <h5>Rent a Bike<a> - Please repay your balance before renting another bike.</a></h5>
+
+    {% elif request.user.hires_in_progress > 3 %}
+
+        <h5>Rent a Bike<a> - Please return one or more bikes before renting another.</a></h5>
+
+    {% else %}
+
+        <h5>Rent a Bike</h5>
+    {% endif %}
+
     <table>
         <thead>
         <tr>
@@ -127,13 +145,31 @@
                         <label>{{ station.number_of_bikes }}</label>
                     </td>
                     <td>
+
+                     {% if request.user.amount_owed >= 30.00 or request.user.hires_in_progress > 3 %}
+
                         {% if station.number_of_bikes > 0 %}
+                            <button type="submit" class="cancelbtn waves-effect waves-light btn" name="user_id"
+                                    value="{{ request.user.id }}" disabled>Rent Bike
+                            </button>
+                        {% else %}
+                            <a>No bikes available</a>
+                        {% endif %}
+
+                    {% else %}
+
+                    {% if station.number_of_bikes > 0 %}
                             <button type="submit" class="cancelbtn waves-effect waves-light btn" name="user_id"
                                     value="{{ request.user.id }}">Rent Bike
                             </button>
                         {% else %}
                             <a>No bikes available</a>
                         {% endif %}
+
+
+                    {% endif %}
+
+
                     </td>
                 </tr>
             </form>

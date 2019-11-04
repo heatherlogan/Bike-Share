@@ -20,8 +20,6 @@ class Station(models.Model):
         return available_bikes.count()
 
 
-
-
 class Bike(models.Model):
 
     in_use = models.BooleanField(default=False)

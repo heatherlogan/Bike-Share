@@ -24,7 +24,13 @@ def home(request):
 
 def city_map(request):
     all_stations_map = serializers.serialize("json", Station.objects.all())
-    return render(request, 'city_map.html.html', context={'all_stations_map':all_stations_map})
+    return render(request, 'city_map.html', context={'all_stations_map':all_stations_map})
+
+
+def how_it_works(request):
+    locations = Station.objects.all()
+
+    return render(request, 'how_it_works.html', context={'locations':locations})
 
 
 def customer_page(request):
@@ -207,9 +213,15 @@ def report_faulty(request, order_id):
     order.fix_amount += 20.0
     order.save()
 
+    customer = get_object_or_404(Account, pk=order.user.id)
+    customer.amount_owed += 15.00
+    customer.save()
+
     bike = order.bike
     bike.is_faulty = True
     bike.save()
+
+    message = "You have been charged £15 to repair bike damages. "
 
     all_stations = Station.objects.all()
     all_bikes = Bike.objects.all()
@@ -218,7 +230,8 @@ def report_faulty(request, order_id):
     context = {
         'all_stations': all_stations,
         'all_bikes': all_bikes,
-        'customers_orders':customers_orders,
+        'customers_orders': customers_orders,
+        'repair_message': message,
     }
     return render(request, 'customer_page.html', context=context)
 

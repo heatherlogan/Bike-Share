@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <br>
+
+    <h4>Renting a Bike</h4>
+    <p>xoihvgfytguhijknjbhv gjklmnbjvhgfuhijklmn bjvhcghjlkm;kjhgfdfghijknbvcfghjn bvcgfhjnbjvg</p>
+    <p>xoihvgfytguhijknjbhv gjklmnbjvhgfuhijklmn bjvhcghjlkm;kjhgfdfghijknbvcfghjn bvcgfhjnbjvg</p>
+    <p>xoihvgfytguhijknjbhv gjklmnbjvhgfuhijklmn bjvhcghjlkm;kjhgfdfghijknbvcfghjn bvcgfhjnbjvg</p>
+
+    <br><br>
+
+    <h4>Returning a Bike</h4>
+    <p>xoihvgfytguhijknjbhv gjklmnbjvhgfuhijklmn bjvhcghjlkm;kjhgfdfghijknbvcfghjn bvcgfhjnbjvg</p>
+    <p>xoihvgfytguhijknjbhv gjklmnbjvhgfuhijklmn bjvhcghjlkm;kjhgfdfghijknbvcfghjn bvcgfhjnbjvg</p>
+    <p>xoihvgfytguhijknjbhv gjklmnbjvhgfuhijklmn bjvhcghjlkm;kjhgfdfghijknbvcfghjn bvcgfhjnbjvg</p>
+
+    <br><br>
+
+    <h4>Topping up your Wallet</h4>
+    <p>xoihvgfytguhijknjbhv gjklmnbjvhgfuhijklmn bjvhcghjlkm;kjhgfdfghijknbvcfghjn bvcgfhjnbjvg</p>
+    <p>xoihvgfytguhijknjbhv gjklmnbjvhgfuhijklmn bjvhcghjlkm;kjhgfdfghijknbvcfghjn bvcgfhjnbjvg</p>
+    <p>xoihvgfytguhijknjbhv gjklmnbjvhgfuhijklmn bjvhcghjlkm;kjhgfdfghijknbvcfghjn bvcgfhjnbjvg</p>]
+
+    <br><br>
+
+    <h4>Our Locations</h4>
+
+    <p>We have {{ locations.count }} stations around Glasgow where you can hire and return bikes. </p>
+
+    {% for location in locations %}
+
+        <li><p>{{ location }}</p></li>
+
+    {% endfor %}
+
+
+
+{% endblock %}

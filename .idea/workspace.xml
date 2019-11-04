@@ -2,25 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c759b705-4e97-422b-81d4-2278199300e5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/BikeShare/templates/how_it_works.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BikeShare/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/BikeShare/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BikeShare/templates/city_map.html" beforeDir="false" afterPath="$PROJECT_DIR$/BikeShare/templates/city_map.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BikeShare/templates/manager_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/BikeShare/templates/manager_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BikeShare/templates/customer_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/BikeShare/templates/customer_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BikeShare/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/BikeShare/templates/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BikeShare/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/BikeShare/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BikeShare/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/BikeShare/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/add_money.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer_pages.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer_pages_2.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login_1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager_page.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/operator.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/renting.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/signup.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/signup1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/signup_success.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/topup.html" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -192,88 +182,78 @@
     <session id="-200207857">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="10" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="10" />
+          <entry key="project.open.time.9" value="3" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="42" />
-          <entry key="py" value="32" />
+          <entry key="html" value="51" />
+          <entry key="png" value="1" />
+          <entry key="py" value="35" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="42" />
-          <entry key="Python" value="32" />
+          <entry key="HTML" value="51" />
+          <entry key="Image" value="1" />
+          <entry key="Python" value="35" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="2665" />
-          <entry key="py" value="2497" />
+          <entry key="html" value="3590" />
+          <entry key="py" value="2985" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="2665" />
-          <entry key="Python" value="2497" />
+          <entry key="HTML" value="3590" />
+          <entry key="Python" value="2985" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/BikeShare/templates/manager_page.html">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BikeShare/templates/top_up.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="15" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="15" />
-              <folding>
-                <element signature="n#src#0;n#img#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#src#0;n#img#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#src#0;n#img#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="180">
+              <caret line="12" column="14" selection-start-line="12" selection-end-line="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BikeShare/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BikeShare/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="353" selection-start-line="353" selection-end-line="354" />
+            <state relative-caret-position="457">
+              <caret line="74" column="15" lean-forward="true" selection-start-line="74" selection-start-column="15" selection-end-line="74" selection-end-column="15" />
               <folding>
                 <element signature="e#0#64#0" expanded="true" />
                 <element signature="e#9748#10472#0" />
+                <marker date="1572906974000" expanded="true" signature="902:986" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/BikeShare/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-              <folding>
-                <marker date="1572366865000" expanded="true" signature="533:657" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/BikeShare/templates/city_map.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="53" column="68" selection-start-line="53" selection-start-column="68" selection-end-line="53" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -308,6 +288,7 @@
       <find>er</find>
       <find>&gt;</find>
       <find>report</find>
+      <find>amount_owed</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -337,7 +318,6 @@
         <option value="$PROJECT_DIR$/BikeShare/templates/top_up_success.html" />
         <option value="$PROJECT_DIR$/BikeShare/templates/paid_balance_success.html" />
         <option value="$PROJECT_DIR$/signup.html" />
-        <option value="$PROJECT_DIR$/BikeShare/urls.py" />
         <option value="$PROJECT_DIR$/BikeShare/templates/base.html" />
         <option value="$PROJECT_DIR$/account/templates/login.html" />
         <option value="$PROJECT_DIR$/BikeShare/templates/top_up.html" />
@@ -346,16 +326,18 @@
         <option value="$PROJECT_DIR$/BikeShare/templates/move_bike.html" />
         <option value="$PROJECT_DIR$/BikeShare/templates/return_bike.html" />
         <option value="$PROJECT_DIR$/BikeShare/templates/operator_page.html" />
-        <option value="$PROJECT_DIR$/BikeShare/templates/customer_page.html" />
-        <option value="$PROJECT_DIR$/BikeShare/templates/navbar.html" />
         <option value="$PROJECT_DIR$/account/templates/signup.html" />
         <option value="$PROJECT_DIR$/BikeShare/forms.py" />
         <option value="$PROJECT_DIR$/account/views.py" />
         <option value="$PROJECT_DIR$/account/models.py" />
-        <option value="$PROJECT_DIR$/BikeShare/views.py" />
-        <option value="$PROJECT_DIR$/BikeShare/models.py" />
-        <option value="$PROJECT_DIR$/BikeShare/templates/city_map.html" />
         <option value="$PROJECT_DIR$/BikeShare/templates/manager_page.html" />
+        <option value="$PROJECT_DIR$/BikeShare/models.py" />
+        <option value="$PROJECT_DIR$/BikeShare/urls.py" />
+        <option value="$PROJECT_DIR$/BikeShare/templates/navbar.html" />
+        <option value="$PROJECT_DIR$/BikeShare/templates/how_it_works.html" />
+        <option value="$PROJECT_DIR$/BikeShare/templates/customer_page.html" />
+        <option value="$PROJECT_DIR$/BikeShare/templates/city_map.html" />
+        <option value="$PROJECT_DIR$/BikeShare/views.py" />
       </list>
     </option>
   </component>
@@ -365,7 +347,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="234" />
     <option name="y" value="23" />
     <option name="width" value="1206" />
@@ -388,6 +370,12 @@
               <item name="bikeshare4" type="b2602c69:ProjectViewProjectNode" />
               <item name="bikeshare4" type="462c0819:PsiDirectoryNode" />
               <item name="BikeShare" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bikeshare4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bikeshare4" type="462c0819:PsiDirectoryNode" />
+              <item name="BikeShare" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -473,10 +461,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="234" y="23" width="1206" height="810" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="810" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29123712" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25107297" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -554,16 +542,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/BikeShare/migrations/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/account/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BikeShare/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -583,23 +561,11 @@
     <entry file="file://$PROJECT_DIR$/users/models.py" />
     <entry file="file://$PROJECT_DIR$/users/apps.py" />
     <entry file="file://$PROJECT_DIR$/users/admin.py" />
-    <entry file="file://$PROJECT_DIR$/signup1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/signup1.html" />
     <entry file="file://$PROJECT_DIR$/../BikeShareSystem/venv/lib/python3.6/site-packages/django/db/models/lookups.py" />
     <entry file="file://$PROJECT_DIR$/../BikeShareSystem/venv/lib/python3.6/site-packages/django/shortcuts.py" />
     <entry file="file://$PROJECT_DIR$/BikeShare/templates/customer_info.html" />
-    <entry file="file://$PROJECT_DIR$/add_money.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/add_money.html" />
     <entry file="file://$PROJECT_DIR$/account/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -610,20 +576,8 @@
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="8" lean-forward="true" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/signup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="74" selection-start-line="24" selection-start-column="74" selection-end-line="24" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/login.html" />
+    <entry file="file://$PROJECT_DIR$/signup.html" />
     <entry file="file://$PROJECT_DIR$/BikeShare/templates/activity_page.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -631,36 +585,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/renting.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="8" lean-forward="true" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/signup_success.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="96" selection-start-line="9" selection-start-column="82" selection-end-line="9" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/renting.html" />
+    <entry file="file://$PROJECT_DIR$/signup_success.html" />
     <entry file="file://$PROJECT_DIR$/BikeShare/templates/paid_balance_success.html" />
-    <entry file="file://$PROJECT_DIR$/login_1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/login_1.html" />
     <entry file="file://$PROJECT_DIR$/BikeShare/templates/top_up_success.html" />
-    <entry file="file://$PROJECT_DIR$/topup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/topup.html" />
     <entry file="file://$PROJECT_DIR$/../BikeShareSystem/venv/lib/python3.6/site-packages/django/db/models/query.py" />
     <entry file="file://$PROJECT_DIR$/BikeShare/migrations/0001_initial.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -684,20 +614,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BikeShare/templates/top_up.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BikeShare/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BikeShare/templates/pay_balance.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -708,31 +624,10 @@
     <entry file="file://$PROJECT_DIR$/BikeShare/tests.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/BikeShare/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BikeShare/templates/return_bike.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="86" selection-start-line="27" selection-start-column="86" selection-end-line="27" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BikeShare/templates/move_bike.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
           <caret line="33" column="12" lean-forward="true" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BikeShare/templates/customer_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="37" column="16" lean-forward="true" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -743,16 +638,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/operator.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BikeShare/templates/navbar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="81" selection-start-line="21" selection-start-column="81" selection-end-line="21" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/operator.html" />
     <entry file="file://$PROJECT_DIR$/account/templates/signup.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -770,16 +656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/account/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="54" column="9" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/account/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1110">
@@ -787,56 +663,105 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BikeShare/views.py">
+    <entry file="file://$PROJECT_DIR$/home.html" />
+    <entry file="file://$PROJECT_DIR$/manager_page.html" />
+    <entry file="file:///private/var/folders/8b/50vk8vfx38d3m4v0wc9hm6w80000gn/T/Unknown.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BikeShare/templates/manager_page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="353" selection-start-line="353" selection-end-line="354" />
+        <state relative-caret-position="285">
+          <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BikeShare/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="7" lean-forward="true" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
           <folding>
-            <element signature="e#0#64#0" expanded="true" />
-            <element signature="e#9748#10472#0" />
+            <element signature="e#516#682#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/home.html">
+    <entry file="file://$PROJECT_DIR$/BikeShare/templates/navbar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="48" column="7" selection-start-line="48" selection-start-column="7" selection-end-line="48" selection-end-column="7" />
+        <state relative-caret-position="20">
+          <caret line="11" column="117" lean-forward="true" selection-start-line="11" selection-start-column="117" selection-end-line="11" selection-end-column="117" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manager_page.html">
+    <entry file="file://$PROJECT_DIR$/BikeShare/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="15" selection-end-line="35" selection-end-column="7" />
+        <state relative-caret-position="365">
+          <caret line="53" column="48" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/account/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="47" column="43" lean-forward="true" selection-start-line="47" selection-start-column="43" selection-end-line="47" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BikeShare/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BikeShare/templates/how_it_works.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BikeShare/templates/customer_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/BikeShare/templates/city_map.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="335">
-          <caret line="53" column="68" selection-start-line="53" selection-start-column="68" selection-end-line="53" selection-end-column="68" />
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BikeShare/models.py">
+    <entry file="file://$PROJECT_DIR$/BikeShare/templates/return_bike.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <marker date="1572366865000" expanded="true" signature="533:657" ph="..." />
-          </folding>
+        <state relative-caret-position="320">
+          <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BikeShare/templates/manager_page.html">
+    <entry file="file://$PROJECT_DIR$/BikeShare/templates/top_up.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="15" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="15" />
+        <state relative-caret-position="180">
+          <caret line="12" column="14" selection-start-line="12" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BikeShare/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="74" column="15" lean-forward="true" selection-start-line="74" selection-start-column="15" selection-end-line="74" selection-end-column="15" />
           <folding>
-            <element signature="n#src#0;n#img#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#src#0;n#img#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#src#0;n#img#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#0#64#0" expanded="true" />
+            <element signature="e#9748#10472#0" />
+            <marker date="1572906974000" expanded="true" signature="902:986" ph="..." />
           </folding>
         </state>
       </provider>
