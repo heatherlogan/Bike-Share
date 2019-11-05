@@ -5,28 +5,25 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class MyAccountManager(BaseUserManager):
 
-    def create_user(self, username, email, role,  password=None):
+    def create_user(self, username, email,  password=None):
         if not username:
             raise ValueError("User must have username")
         if not email:
             raise ValueError("User must have email")
-        if not role:
-            raise ValueError("User must have role")
+
 
         user = self.model(
             username=username,
             email=self.normalize_email(email),
-            role=role,
         )
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, username, email, role, password):
+    def create_superuser(self, username, email, password):
         user = self.create_user(
             username=username,
             email=self.normalize_email(email),
-            role=role,
             password=password,
         )
         user.is_admin = True
@@ -60,7 +57,7 @@ class Account(AbstractBaseUser):
     amount_owed = models.FloatField(default=0.00)
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['role', 'email']
+    REQUIRED_FIELDS = ['email']
 
     objects = MyAccountManager()
 
