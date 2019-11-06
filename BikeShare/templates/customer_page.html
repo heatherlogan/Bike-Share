@@ -55,8 +55,9 @@
     {% endif %}
 
 
-    <h5>Your Current Hires</h5>
+    {%  if request.user.hires_in_progress > 0  %}
 
+    <h5>Your Current Hires</h5>
     <table>
         <thead>
         <tr>
@@ -103,6 +104,9 @@
         {% endfor %}
         </tbody>
     </table>
+
+    {% endif %}
+
     <br>
 
     <h5>Station Locations</h5>
