@@ -1,0 +1,35 @@
+NAME
+Bikeshare system designed by group 1-c
+
+DESCRIPTION
+This bike share system has three kinds of users: customer, manager and operator. The customers need to register before login, then customers are able to see the user details, rent bikes, top up balance and browser a google map where all the stations are marked. After renting a bike, they are able to see the current hires, return bikes, report faulty and pay for their trips. Bike ID, current station and the condition of the bike are showed in the operator page, an operator can move bikes to other stations and repair the broken bike. In manager page, it showed the station profit contribution, route frequency distribution, station bike count and star users in data visualization format.
+
+
+INSTALLATION
+The source code of this bikeshare system is stored in GitLab, import the file to the PyCharm Editor with the copy of URL – or from the submitted files. In a bash terminal, CD into the outer Bikeshare folder and enter ./install.sh.
+This is a script which installs requirements for the project, manages migrations to the database. You will be prompted to enter a username, email and password. This will create a ‘superuser’ of the site, with access to all functionality and the administration page. The server will then be run on http://127.0.0.1:8000/
+The users are able to log in the bikeshare system using the username and password of the superuser created in the terminal.
+
+
+FUNCTION
+Home page. Home page shows a picture, a choosing bar and a context box. Before log in, users are able to see the ‘how it works’ information which shows how the bikeshare system works as text. After register and log in as customer, it would link to the customer page when the user click ‘rent a bike’.
+
+Log in page. Customer users can log in through this page, if not registered, it can be led to the register page.
+
+Register page. Users are required to enter name, password and email address to register.
+
+Customer page. Customer page shows the user details which contains username, email address, hires in progress, wallet balance and amount owed. Besides, there’s also a linked google map on the customer page which shows the location of all the bike stations and can be zoomed in and out. Users can see the available bikes in a table below the map and select the bike they want. After clicking the ‘rent bike’ button, the bike ID, start station and start time of the order will be shown as current hires and start to calculate the amount in need. During the trip, customers are able to report faulty and return bike through the related buttons.
+
+Return bike page. After clicking the ‘return bike’ button, users are led to the return bike page, they are required to select the station name in this page and click ‘return bike’.
+
+Top up page. After the bike trip, amount owed will be shown in the customer page, users click ‘top up balance’ to go to the top up page. They are required to enter a certain amount lager than 5 and their card number and CVV in the top-up page and click ‘confirm’ to top up.
+
+Pay balance page. Customers are required to enter any certain amount below their owed amount, their still-owed amount and balance will be shown in this page.
+
+Operator page. Bike ID, current location and condition are shown to the operator, an operator can move bikes to other stations and repair the bike on click of the related buttons.
+
+Move bike page. Bike ID, condition and current locations are shown in this page, an operator is required to enter the station they want to move the bike to.
+
+Manager page. This page showed the station profit contribution, route frequency distribution, station bike count and star users in data visualization format.
+
+
