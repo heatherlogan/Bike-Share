@@ -8,13 +8,10 @@ from django.db.models import Count
 import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
-
-
 from django.core import serializers
 
 
 def home(request):
-
     return render(request, 'home.html')
 
 
