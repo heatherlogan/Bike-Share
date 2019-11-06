@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c759b705-4e97-422b-81d4-2278199300e5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/BikeShare/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/BikeShare/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BikeShare/templates/how_it_works.html" beforeDir="false" afterPath="$PROJECT_DIR$/BikeShare/templates/how_it_works.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BikeShare/templates/manager_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/BikeShare/templates/manager_page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BikeShare/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/BikeShare/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -189,9 +188,9 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="55" />
+          <entry key="html" value="56" />
           <entry key="png" value="1" />
-          <entry key="py" value="44" />
+          <entry key="py" value="45" />
           <entry key="sh" value="2" />
           <entry key="txt" value="4" />
         </counts>
@@ -199,10 +198,10 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Bash" value="2" />
-          <entry key="HTML" value="55" />
+          <entry key="HTML" value="56" />
           <entry key="Image" value="1" />
           <entry key="PLAIN_TEXT" value="4" />
-          <entry key="Python" value="44" />
+          <entry key="Python" value="45" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -223,6 +222,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/BikeShare/templates/manager_page.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="587">
+              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+              <folding>
+                <element signature="n#src#0;n#img#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#src#0;n#img#0;n#div#1;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#src#0;n#img#0;n#div#2;n#body#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BikeShare/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -241,8 +254,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BikeShare/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="244" column="19" selection-start-line="244" selection-start-column="19" selection-end-line="244" selection-end-column="19" />
+            <state relative-caret-position="439">
+              <caret line="409" lean-forward="true" selection-start-line="409" selection-end-line="409" />
               <folding>
                 <element signature="e#0#64#0" expanded="true" />
               </folding>
@@ -250,11 +263,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BikeShare/templates/how_it_works.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="34" column="75" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
+            <state relative-caret-position="92">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="e#237#260#0#HTML" expanded="true" />
                 <element signature="e#634#657#0#HTML" expanded="true" />
@@ -361,13 +374,13 @@
         <option value="$PROJECT_DIR$/BikeShare/templates/customer_page.html" />
         <option value="$PROJECT_DIR$/BikeShare/templates/city_map.html" />
         <option value="$USER_HOME$/Library/Containers/com.apple.mail/Data/Library/Mail Downloads/27DE3417-6708-46F5-B148-32A07994A22D/views.py" />
-        <option value="$PROJECT_DIR$/BikeShare/templates/manager_page.html" />
         <option value="$PROJECT_DIR$/account/models.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/install.sh" />
-        <option value="$PROJECT_DIR$/BikeShare/views.py" />
         <option value="$PROJECT_DIR$/BikeShare/templates/home.html" />
         <option value="$PROJECT_DIR$/BikeShare/templates/how_it_works.html" />
+        <option value="$PROJECT_DIR$/BikeShare/views.py" />
+        <option value="$PROJECT_DIR$/BikeShare/templates/manager_page.html" />
       </list>
     </option>
   </component>
@@ -508,7 +521,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32961586" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50214595" side_tool="true" weight="0.21189591" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49785408" visible="true" weight="0.43309352" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49785408" visible="true" weight="0.044604316" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3283767" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -572,7 +585,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/users/admin.py" />
     <entry file="file://$PROJECT_DIR$/signup1.html" />
     <entry file="file://$PROJECT_DIR$/../BikeShareSystem/venv/lib/python3.6/site-packages/django/db/models/lookups.py" />
     <entry file="file://$PROJECT_DIR$/../BikeShareSystem/venv/lib/python3.6/site-packages/django/shortcuts.py" />
@@ -742,16 +754,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BikeShare/templates/manager_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-          <folding>
-            <element signature="e#156#205#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/account/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -796,16 +798,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BikeShare/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="244" column="19" selection-start-line="244" selection-start-column="19" selection-end-line="244" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BikeShare/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -819,15 +811,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Library/Containers/com.apple.mail/Data/Library/Mail Downloads/CDF7CB0E-083C-4BF8-AED9-DE629697DB2B/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="299" selection-start-line="299" selection-end-line="405" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BikeShare/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="409" lean-forward="true" selection-start-line="409" selection-end-line="409" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/BikeShare/templates/how_it_works.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="34" column="75" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
+        <state relative-caret-position="92">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="e#237#260#0#HTML" expanded="true" />
             <element signature="e#634#657#0#HTML" expanded="true" />
             <element signature="e#953#976#0#HTML" expanded="true" />
             <element signature="e#1345#1368#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BikeShare/templates/manager_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="n#src#0;n#img#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#src#0;n#img#0;n#div#1;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#src#0;n#img#0;n#div#2;n#body#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

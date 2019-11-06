@@ -2,9 +2,14 @@
 
 {% block content %}
 <body>
+
     <div class="container" align = "center">
-        <h3>Station Profit Contibution</h3>
-        <img src="data:image/png;base64, {{ station_profit }}" alt = "Profit per Station - - Pie Chart : Unavailable">
+        {% if total_Profit > 0.0 %}
+            <h3>Station Profit Contibution</h3>
+            <img src="data:image/png;base64, {{ station_profit }}" alt = "Profit per Station - Pie Chart : Unavailable">
+        {% else %}
+            <h4>Business in Loss : £ {{ total_Profit}}</h4>
+        {% endif %}
     </div>
     <div class="container" align = "center">
         <h3>Route Frequency Distribution</h3>
@@ -14,16 +19,21 @@
         <h3>Station Bike Count</h3>
         <img src="data:image/png;base64, {{ station_bike_count }}" alt = "Station Bike Count - Bar Graph : Unavailable">
     </div>
-    <div class = "container" align = "center"></div>
+    <div class = "container" align = "center">
         <h3>Star Users</h3>
-        {% if book_list %}
-            <ul>
+        {% if star_users %}
+            <table>
+                <tr align="center">
+                    <th align = "center"><font color="#4B0082">USER</font></th>
+                    <th align = "center"><font color="#4B0082">Number of Rides</font></th>
+                </tr>
                 {% for user in star_users %}
-                    <li>
-                        {{ user.user }}
-                    </li>
+                    <tr>
+                        <td>{{ user.user__username }}</td>
+                        <td>{{ user.usages }}</td>
+                    </tr>
                 {% endfor %}
-            </ul>
+            </table>
         {% else %}
             <h5>Star Users : Unavailable</h5>
         {% endif %}

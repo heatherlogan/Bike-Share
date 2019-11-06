@@ -317,44 +317,50 @@ def manager_page(request):
 
     #Profit per Station - Pie Chart
     try :
-        stationProfitResultset = Order.objects.values('start_station').annotate(profit =(Sum('due_amount')))
+        stationProfitResultset = Order.objects.select_related().values('start_station__station_name').annotate(profit =(Sum('due_amount')-Sum('fix_amount')))
         if stationProfitResultset is not None :
             station_labels = []
             profit_values = []
             totalProfit = 0.0
             for station in stationProfitResultset :
-                station_labels.append(station['start_station'])
-                profit_values.append(station['profit'])
-                totalProfit = totalProfit + station['profit']
-            plt.title('Station Profit Contibution')
-            plt.pie(profit_values,labels=station_labels,shadow=True,autopct='%1.1f%%',startangle = 180 )
-            plt.axis('equal')
-            plt.savefig(buf, format='png')
-            station_profit = base64.b64encode(buf.getvalue()).decode('utf-8').replace('\n', '')
+                if station['profit'] > 0:
+                    station_labels.append(str(station['start_station__station_name']))
+                    profit_values.append(float(station['profit']))
+                totalProfit = totalProfit + float(station['profit'])
+            if totalProfit > 0.0:
+                plt.clf()
+                plt.title('Station Profit Contibution')
+                plt.pie(profit_values,labels=station_labels,shadow=True,autopct='%1.1f%%',startangle = 180)
+                plt.axis('equal')
+                plt.savefig(buf, format='png')
+                station_profit = base64.b64encode(buf.getvalue()).decode('utf-8').replace('\n', '')
     except Exception as e :
         print(e)
 
     #Route Frequencies - Horizontal bar graph
     try :
-        routeFrequencyResultset = Order.objects.values('start_station','end_station').annotate(frequency =(Count('id'))).order_by('start_station','end_station')
+        routeFrequencyResultset = Order.objects.select_related().values('start_station__station_name','end_station__station_name').annotate(frequency =(Count('id')))
         if routeFrequencyResultset is not None :
             route_list = []
             frequency_values = []
             i = 0
             y = []
             for route in routeFrequencyResultset :
-                route_list.append(route['start_station'] + '-' + route['end_station'])
-                frequency_values.append(route['frequency'])
+                route_list.append(str(route['start_station__station_name']) + '-' + str(route['end_station__station_name']))
+                frequency_values.append(int(route['frequency']))
                 y.append(i)
                 i= i+1
+            plt.clf()
             plt.title('Route Frequency Distribution')
-            plt.barh(y,frequency_values,alpha = 0.7)
-            plt.yticks(y+0.0,route_list)
+            plt.barh(y,frequency_values,alpha = 0.7,color = 'crimson')
+            plt.yticks(y,route_list)
             plt.xlabel('Frequency of Rides')
             plt.ylabel('Route')
-            buf.flush()
-            plt.savefig(buf, format='png')
-            route_frequency = base64.b64encode(buf.getvalue()).decode('utf-8').replace('\n', '')
+            plt.tight_layout()
+            buf1= BytesIO()
+            plt.savefig(buf1, format='png')
+            route_frequency = base64.b64encode(buf1.getvalue()).decode('utf-8').replace('\n', '')
+            buf1.close()
     except  Exception as e :
         print(e)
 
@@ -362,7 +368,7 @@ def manager_page(request):
 
     #Station Bike Count - Bar Graph
     try :
-        stationBikeCountResultset = Bike.objects.values('Station').annotate(bikeCount = Count('id')).filter(in_use = False)
+        stationBikeCountResultset = Bike.objects.select_related().values('station__station_name').annotate(bikeCount = Count('id')).filter(in_use = False)
         bikeInUse = Bike.objects.annotate(bikeCount=Count('id')).filter(in_use= True)
         if(stationBikeCountResultset is not None) :
             station_list = []
@@ -370,36 +376,42 @@ def manager_page(request):
             x = []
             i = 0
             for station_bikeCount in stationBikeCountResultset :
-                station_list.append(station_bikeCount['Station'])
-                bike_count.append(station_bikeCount['bikeCount'])
+                station_list.append(str(station_bikeCount['station__station_name']))
+                bike_count.append(int(station_bikeCount['bikeCount']))
                 x.append(i)
                 i=i+1
-            station_list.append('Bike On Road')
-            bike_count.append(bikeInUse['bikeCount'])
-            x.append(i)
+            #station_list.append('Bike On Road')
+            #bike_count.append(int(bikeInUse['bikeCount']))
+            #x.append(i)
+            plt.clf()
             plt.title('Station Bike Count')
-            plt.bar(x,bike_count,alpha=0.7)
-            plt.xticks(x+0.0,station_list)
+            plt.bar(x,bike_count,alpha=0.7,color='steelblue')
+            plt.xticks(x,station_list,rotation=90)
             plt.xlabel('Station')
             plt.ylabel('Number of Bikes')
-            buf.flush()
-            plt.savefig(buf, format='png')
-            station_bike_count = base64.b64encode(buf.getvalue()).decode('utf-8').replace('\n', '')
+            plt.tight_layout()
+            buf2 = BytesIO()
+            plt.savefig(buf2, format='png')
+            station_bike_count = base64.b64encode(buf2.getvalue()).decode('utf-8').replace('\n', '')
+            buf2.close()
     except Exception as e :
         print(e)
 
 
     #Star Users - List
     try:
-        star_users = Order.objects.values('user').annotate(usages = Count('id')).order_by('-usages')[:5]
+        star_users = Order.objects.select_related().values('user__username').annotate(usages = Count('id')).order_by('-usages')[:5]
     except Exception as e :
         print(e)
 
     buf.close()
     context = {
-        'station_profit': station_profit,
-        'route_frequency': route_frequency,
+        'total_Profit': totalProfit,
+
         'station_bike_count': station_bike_count,
-        'star_users': star_users}
+        'star_users': star_users,
+        'station_profit': station_profit,
+        'route_frequency': route_frequency}
+    print(context)
 
     return render(request, 'manager_page.html', context=context)
