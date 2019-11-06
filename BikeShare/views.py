@@ -14,22 +14,19 @@ from django.core import serializers
 
 
 def home(request):
-    # all_stations = Station.objects.all()
-    all_stations = serializers.serialize("json", Station.objects.all())
-    context = {
-        'all_stations': all_stations
-    }
-    return render(request, 'home.html', context=context)
+
+    return render(request, 'home.html')
 
 
 def city_map(request):
+
+    # passes station objects to city map html
     all_stations_map = serializers.serialize("json", Station.objects.all())
     return render(request, 'city_map.html', context={'all_stations_map':all_stations_map})
 
 
 def how_it_works(request):
     locations = Station.objects.all()
-
     return render(request, 'how_it_works.html', context={'locations':locations})
 
 
@@ -53,21 +50,26 @@ def customer_page(request):
 
 def rent_bike(request, station_id):
 
-    # create new order with customer id, bike id, station id, start time.
-
+    # get station object from the id passed to the function
     station = get_object_or_404(Station, pk=station_id)
+    # take the first bike from the station which is not in use or faulty
     bike = station.bike_set.all().filter(in_use=False, is_faulty=False).first()
     rented_bike = get_object_or_404(Bike, pk=bike.id)
+    # get user object
     user = get_object_or_404(Account, pk=request.POST.get('user_id', False))
 
+    # take the time the rental began
     time = datetime.datetime.now()
 
+    # increment the users 'hires in progress' attribute
     user.hires_in_progress += 1
     user.save()
 
+    # create a new order with bike, user, station and start time
     new_order = Order(bike=rented_bike, user=user, start_station=station, start_time=time)
     new_order.save()
 
+    # change bike in use to true to stop it from being rented again
     bike.in_use = True
     bike.save()
 
@@ -85,6 +87,7 @@ def rent_bike(request, station_id):
 
 def return_bike(request, order_id):
 
+    # calculate cost from the start and end time, at 5 per hour rounded up, or £30 a day
     def calculate_cost(starttime, endtime):
         if starttime.date() == endtime.date():
             hours_used = endtime.hour - starttime.hour
@@ -98,17 +101,23 @@ def return_bike(request, order_id):
     if request.method == 'POST':
         form = LocationForm(request.POST)
         if form.is_valid():
+
+            # get return station location
+
             start_time = order.start_time
             end = datetime.datetime.now()
             location = form.cleaned_data['locations']
             station = get_object_or_404(Station, pk=location.pk)
 
+            # complete order object with end station, check out time, cost, and is complete
             order.end_station = station
             order.check_out_time = end
             order_cost = calculate_cost(start_time, end)
             order.is_complete = True
             order.due_amount = order_cost
 
+
+            # add cost to user object and decrement hires in progress
             userid = order.user
             user = get_object_or_404(Account, pk=userid.pk)
             user.amount_owed += order_cost
@@ -146,6 +155,8 @@ def top_up_balance(request):
 
 
 def submit_top_up(request):
+
+    # user tops up wallet balance
 
     success_message = ""
 
@@ -209,10 +220,12 @@ def submit_pay_balance(request):
 
 def report_faulty(request, order_id):
 
+    # add fix amount to order
     order = get_object_or_404(Order, pk=order_id)
     order.fix_amount += 20.0
     order.save()
 
+    # charge customer #15
     customer = get_object_or_404(Account, pk=order.user.id)
     customer.amount_owed += 15.00
     customer.save()
@@ -221,6 +234,7 @@ def report_faulty(request, order_id):
     bike.is_faulty = True
     bike.save()
 
+    # warn user they have been charged
     message = "You have been charged £15 to repair bike damages. "
 
     all_stations = Station.objects.all()
@@ -325,7 +339,7 @@ def manager_page(request):
 
     #Route Frequencies - Horizontal bar graph
     try :
-        routeFrequencyResultset = Order.objects.values('start_station','end_station').annotate(frequency =(Count('id'))).orderby('start_station','end_station')
+        routeFrequencyResultset = Order.objects.values('start_station','end_station').annotate(frequency =(Count('id'))).order_by('start_station','end_station')
         if routeFrequencyResultset is not None :
             route_list = []
             frequency_values = []

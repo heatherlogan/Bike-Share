@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c759b705-4e97-422b-81d4-2278199300e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webResources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BikeShareSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BikeShareSystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BikeShare/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/BikeShare/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BikeShare/templates/how_it_works.html" beforeDir="false" afterPath="$PROJECT_DIR$/BikeShare/templates/how_it_works.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BikeShare/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/BikeShare/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -196,22 +189,24 @@
         <counts>
           <entry key="html" value="54" />
           <entry key="png" value="1" />
-          <entry key="py" value="43" />
-          <entry key="txt" value="3" />
+          <entry key="py" value="44" />
+          <entry key="sh" value="2" />
+          <entry key="txt" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="Bash" value="2" />
           <entry key="HTML" value="54" />
           <entry key="Image" value="1" />
-          <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="43" />
+          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="Python" value="44" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="4519" />
-          <entry key="py" value="2989" />
+          <entry key="py" value="3884" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
@@ -219,21 +214,47 @@
         <counts>
           <entry key="HTML" value="4519" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="2989" />
+          <entry key="Python" value="3884" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BikeShare/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+            <state relative-caret-position="60">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
               <folding>
                 <element signature="e#60#107#0#HTML" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/BikeShare/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="241">
+              <caret line="392" lean-forward="true" selection-start-line="392" selection-end-line="392" />
+              <folding>
+                <element signature="e#0#64#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/install.sh">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -270,6 +291,7 @@
       <find>report</find>
       <find>amount_owed</find>
       <find>rent</find>
+      <find>orderby</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -316,11 +338,12 @@
         <option value="$PROJECT_DIR$/BikeShare/templates/city_map.html" />
         <option value="$USER_HOME$/Library/Containers/com.apple.mail/Data/Library/Mail Downloads/27DE3417-6708-46F5-B148-32A07994A22D/views.py" />
         <option value="$PROJECT_DIR$/BikeShare/templates/manager_page.html" />
-        <option value="$PROJECT_DIR$/BikeShare/views.py" />
         <option value="$PROJECT_DIR$/account/models.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/BikeShare/templates/how_it_works.html" />
         <option value="$PROJECT_DIR$/BikeShare/templates/home.html" />
+        <option value="$PROJECT_DIR$/install.sh" />
+        <option value="$PROJECT_DIR$/BikeShare/views.py" />
       </list>
     </option>
   </component>
@@ -348,50 +371,6 @@
             <path>
               <item name="bikeshare4" type="b2602c69:ProjectViewProjectNode" />
               <item name="bikeshare4" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bikeshare4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bikeshare4" type="462c0819:PsiDirectoryNode" />
-              <item name="account" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bikeshare4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bikeshare4" type="462c0819:PsiDirectoryNode" />
-              <item name="account" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bikeshare4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bikeshare4" type="462c0819:PsiDirectoryNode" />
-              <item name="account" type="462c0819:PsiDirectoryNode" />
-              <item name="apps.py" type="8704e2dd:PyFileNode" />
-            </path>
-            <path>
-              <item name="bikeshare4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bikeshare4" type="462c0819:PsiDirectoryNode" />
-              <item name="account" type="462c0819:PsiDirectoryNode" />
-              <item name="models.py" type="8704e2dd:PyFileNode" />
-            </path>
-            <path>
-              <item name="bikeshare4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bikeshare4" type="462c0819:PsiDirectoryNode" />
-              <item name="BikeShare" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bikeshare4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bikeshare4" type="462c0819:PsiDirectoryNode" />
-              <item name="BikeShare" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bikeshare4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bikeshare4" type="462c0819:PsiDirectoryNode" />
-              <item name="BikeShareSystem" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bikeshare4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bikeshare4" type="462c0819:PsiDirectoryNode" />
-              <item name="manage.py" type="8704e2dd:PyFileNode" />
             </path>
           </expand>
           <select />
@@ -558,7 +537,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/users/apps.py" />
     <entry file="file://$PROJECT_DIR$/users/admin.py" />
     <entry file="file://$PROJECT_DIR$/signup1.html" />
     <entry file="file://$PROJECT_DIR$/../BikeShareSystem/venv/lib/python3.6/site-packages/django/db/models/lookups.py" />
@@ -739,17 +717,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BikeShare/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="390" column="49" lean-forward="true" selection-start-line="390" selection-start-column="49" selection-end-line="390" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-            <marker date="1572962059000" expanded="true" signature="902:986" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/account/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -767,13 +734,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="411">
           <caret line="106" lean-forward="true" selection-start-line="11" selection-start-column="12" selection-end-line="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -796,10 +756,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/BikeShare/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        <state relative-caret-position="60">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
           <folding>
             <element signature="e#60#107#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BikeShare/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="392" lean-forward="true" selection-start-line="392" selection-end-line="392" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
           </folding>
         </state>
       </provider>
