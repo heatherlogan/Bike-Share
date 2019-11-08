@@ -1,4 +1,4 @@
-Django==2.0.2
+Django==2.0.12
 matplotlib==3.0.3
 msgpack-numpy==0.4.3.2
 numpy==1.15.2
